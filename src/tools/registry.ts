@@ -16,6 +16,9 @@ import {
   ShieldExclamationIcon,
   EyeSlashIcon,
   TrashIcon,
+  LinkSlashIcon,
+  CursorArrowRaysIcon,
+  Squares2X2Icon,
 } from '@heroicons/react/24/outline';
 import type {ToolDef, ToolCategory} from './types';
 
@@ -170,6 +173,50 @@ export const TOOLS: ToolDef[] = [
     icon: TrashIcon,
     keywords: ['exif', 'metadata', 'remove', 'strip', 'gps', 'mp4', 'mov', 'video', 'privacy', 'clean'],
     component: lazy(() => import('./MetadataRemover')),
+  },
+  {
+    id: 'image-pixelator',
+    name: 'Image Pixelator',
+    tagline: 'Mosaic faces and secrets before sharing',
+    description:
+      'Draw a box over faces, plates or tokens and download a censored copy. The region becomes solid mosaic blocks with no blur for software to reverse.',
+    category: 'Media',
+    icon: Squares2X2Icon,
+    keywords: ['pixelate', 'mosaic', 'censor', 'blur', 'redact', 'face', 'screenshot', 'privacy'],
+    component: lazy(() => import('./ImagePixelator')),
+  },
+  {
+    id: 'totp-generator',
+    name: 'TOTP Generator',
+    tagline: 'Offline 2FA codes without a synced app',
+    description:
+      'Generate RFC 6238 time-based one-time passwords from an otpauth:// URI or Base32 secret. Codes are derived locally with Web Crypto — the secret never reaches a server.',
+    category: 'Security',
+    icon: CursorArrowRaysIcon,
+    keywords: ['totp', '2fa', 'mfa', 'otp', 'authenticator', 'one-time password', 'rfc6238', 'privacy'],
+    component: lazy(() => import('./TotpGenerator')),
+  },
+  {
+    id: 'link-cleaner',
+    name: 'Link Cleaner',
+    tagline: 'Strip tracking parameters before sharing URLs',
+    description:
+      'Remove utm_*, fbclid, gclid and dozens of other click-identifiers from links. Paste one URL or a batch; cleaned links are rebuilt in your browser.',
+    category: 'Security',
+    icon: LinkSlashIcon,
+    keywords: ['url', 'tracking', 'utm', 'fbclid', 'gclid', 'clean', 'share', 'privacy'],
+    component: lazy(() => import('./LinkCleaner')),
+  },
+  {
+    id: 'fingerprint-panel',
+    name: 'Browser Fingerprint Panel',
+    tagline: 'See what your browser reveals about you',
+    description:
+      'Inspect the canvas, WebGL, audio, hardware and preference signals that fingerprinting scripts read. A local mirror only — nothing is reported anywhere.',
+    category: 'Security',
+    icon: EyeSlashIcon,
+    keywords: ['fingerprint', 'canvas', 'webgl', 'audio', 'tracking', 'browser', 'entropy', 'privacy'],
+    component: lazy(() => import('./FingerprintPanel')),
   },
   {
     id: 'text-diff',
