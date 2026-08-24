@@ -20,7 +20,6 @@ import {
   CursorArrowRaysIcon,
   Squares2X2Icon,
   TableCellsIcon,
-  UserGroupIcon,
   EnvelopeIcon,
   EyeIcon,
   ArchiveBoxIcon,
@@ -267,17 +266,6 @@ export const TOOLS: ToolDef[] = [
     icon: TableCellsIcon,
     keywords: ['anonymize', 'pseudonymize', 'csv', 'json', 'gdpr', 'lgpd', 'privacy', 'dataset'],
     component: lazy(() => import('./CsvAnonymizer')),
-  },
-  {
-    id: 'fake-persona',
-    name: 'Fake Persona Generator',
-    tagline: 'Synthetic identities for private signups',
-    description:
-      'Generate fake but structurally valid identities — names, CPF/CNPJ with checksum, addresses, phones and Luhn-valid cards — from OS randomness. Use for signups and fixtures without exposing real PII.',
-    category: 'Security',
-    icon: UserGroupIcon,
-    keywords: ['fake', 'persona', 'identity', 'cpf', 'cnpj', 'synthetic', 'privacy', 'test data'],
-    component: lazy(() => import('./FakePersona')),
   },
   {
     id: 'email-privacy-inspector',
