@@ -19,6 +19,12 @@ import {
   LinkSlashIcon,
   CursorArrowRaysIcon,
   Squares2X2Icon,
+  TableCellsIcon,
+  UserGroupIcon,
+  EnvelopeIcon,
+  EyeIcon,
+  ArchiveBoxIcon,
+  QrCodeIcon,
 } from '@heroicons/react/24/outline';
 import type {ToolDef, ToolCategory} from './types';
 
@@ -250,6 +256,72 @@ export const TOOLS: ToolDef[] = [
     icon: EyeSlashIcon,
     keywords: ['redact', 'pii', 'email', 'token', 'secret', 'sanitize', 'mask'],
     component: lazy(() => import('./SecretRedactor')),
+  },
+  {
+    id: 'csv-anonymizer',
+    name: 'CSV / JSON Anonymizer',
+    tagline: 'Anonymize spreadsheets without breaking joins',
+    description:
+      'Anonymize CSV and JSON datasets locally: pseudonymize, mask, hash or remove columns. Same salt → same pseudonyms, so joins stay consistent. Everything runs in this tab.',
+    category: 'Data',
+    icon: TableCellsIcon,
+    keywords: ['anonymize', 'pseudonymize', 'csv', 'json', 'gdpr', 'lgpd', 'privacy', 'dataset'],
+    component: lazy(() => import('./CsvAnonymizer')),
+  },
+  {
+    id: 'fake-persona',
+    name: 'Fake Persona Generator',
+    tagline: 'Synthetic identities for private signups',
+    description:
+      'Generate fake but structurally valid identities — names, CPF/CNPJ with checksum, addresses, phones and Luhn-valid cards — from OS randomness. Use for signups and fixtures without exposing real PII.',
+    category: 'Security',
+    icon: UserGroupIcon,
+    keywords: ['fake', 'persona', 'identity', 'cpf', 'cnpj', 'synthetic', 'privacy', 'test data'],
+    component: lazy(() => import('./FakePersona')),
+  },
+  {
+    id: 'email-privacy-inspector',
+    name: 'Email Privacy Inspector',
+    tagline: 'Reveal hidden pixels and spoofing signals',
+    description:
+      'Paste raw email source to detect 1×1 tracking pixels, Reply-To mismatches, bulk-mail flags and link trackers. Parsed locally with DOMParser and regex — never sent.',
+    category: 'Security',
+    icon: EnvelopeIcon,
+    keywords: ['email', 'pixel', 'tracking', 'spoof', 'dkim', 'spf', 'privacy', 'eml'],
+    component: lazy(() => import('./EmailPrivacyInspector')),
+  },
+  {
+    id: 'tracker-inspector',
+    name: 'Tracker Inspector',
+    tagline: 'Audit HTML for pixels, scripts and beacons',
+    description:
+      'Paste HTML from newsletters or landing pages to enumerate tracking pixels, third-party scripts, hidden iframes and utm_*/fbclid links. Sanitize locally before sharing.',
+    category: 'Security',
+    icon: EyeIcon,
+    keywords: ['tracker', 'pixel', 'html', 'sanitize', 'utm', 'privacy', 'beacon', 'script'],
+    component: lazy(() => import('./TrackerInspector')),
+  },
+  {
+    id: 'paste-vault',
+    name: 'Paste Vault',
+    tagline: 'Seal notes with a passphrase, share via fragment',
+    description:
+      'Encrypt a note with AES-256-GCM + PBKDF2 and share it as a URL fragment that never reaches a server. Decryption happens entirely in the recipient tab.',
+    category: 'Security',
+    icon: ArchiveBoxIcon,
+    keywords: ['vault', 'encrypt', 'paste', 'share', 'aes', 'fragment', 'privacy', 'seal'],
+    component: lazy(() => import('./PasteVault')),
+  },
+  {
+    id: 'qr-studio',
+    name: 'QR Studio',
+    tagline: 'Generate and scan QR codes offline',
+    description:
+      'Create QR codes for URLs, WiFi, Pix or secrets on a Canvas and scan QR images with jsQR — both bundled and offline. No external API ever sees your data.',
+    category: 'Media',
+    icon: QrCodeIcon,
+    keywords: ['qr', 'qrcode', 'scan', 'wifi', 'pix', 'offline', 'privacy', 'canvas'],
+    component: lazy(() => import('./QrStudio')),
   },
 ];
 
