@@ -82,10 +82,34 @@ export default function Privacy() {
         listStyle="decimal"
         header={<Heading level={2}>How to verify</Heading>}
       >
-        <ListItem label="Disconnect from the internet after the page has loaded. The tools keep working because they do not need a server." />
-        <ListItem label="Watch the Network tab while hashing a file or decoding a JWT. Your input never appears as a request payload." />
-        <ListItem label="Save the site and open the files from disk. sTools is a static build - no backend, no sync." />
-        <ListItem label="Read the source. Crypto lives in src/lib/crypto.ts and uses only the Web Crypto API." />
+        <ListItem
+          label={
+            <Text display="block" textWrap="pretty">
+              Disconnect from the internet after the page has loaded. The tools keep working because they do not need a server.
+            </Text>
+          }
+        />
+        <ListItem
+          label={
+            <Text display="block" textWrap="pretty">
+              Watch the Network tab while hashing a file or decoding a JWT. Your input never appears as a request payload.
+            </Text>
+          }
+        />
+        <ListItem
+          label={
+            <Text display="block" textWrap="pretty">
+              Save the site and open the files from disk. sTools is a static build - no backend, no sync.
+            </Text>
+          }
+        />
+        <ListItem
+          label={
+            <Text display="block" textWrap="pretty">
+              Read the source. Crypto lives in src/lib/crypto.ts and uses only the Web Crypto API.
+            </Text>
+          }
+        />
       </List>
 
       <Section variant="transparent" padding={0}>
@@ -101,14 +125,62 @@ export default function Privacy() {
             listStyle="disc"
             header={<Heading level={3}>What these tools do not do</Heading>}
           >
-            <ListItem label="Image and video metadata: images are re-encoded on a Canvas, which drops EXIF and GPS but is lossy for JPEG; videos have udta, meta and XMP boxes stripped byte-for-byte without re-encoding, but vendor-specific boxes may remain." />
-            <ListItem label="Image pixelation: selected regions become solid mosaic blocks with fillRect, so no blur can be reversed - but a too-small selection can still leave context clues." />
-            <ListItem label="JWT decoding: inspects header and claims locally; it does not verify signatures against a public key or check revocation." />
-            <ListItem label="AES and Vault: envelopes use AES-256-GCM with PBKDF2 (210,000 iterations, SHA-256). Security depends entirely on the passphrase you choose. Vault share URLs keep ciphertext in the fragment, which is not sent to a server but does stay in browser history and clipboard until you clear it. There is no forward secrecy." />
-            <ListItem label="CSV and JSON Anonymizer: pseudonymization uses a fast FNV-1a hash plus the salt you provide, with deterministic mapping to preserve joins. It is not a cryptographic KDF and it does not provide k-anonymity or l-diversity. Small or sparse datasets can still allow re-identification. Always review the output before sharing." />
-            <ListItem label="Email and Tracker Inspectors: detection is heuristic - 1x1 pixels, known tracker domains, utm and fbclid params, hidden iframes and fingerprint hints via DOMParser and regex. Novel trackers can be missed and legitimate images can be flagged. Not a replacement for a mail gateway or content security policy review." />
-            <ListItem label="QR Studio: generation and decoding are bundled (qrcode and jsQR) and run on Canvas entirely offline. Scan can fail on blur, low contrast or damaged codes, and a QR code can hide any URL - verify decoded links with Link Cleaner before opening." />
-            <ListItem label="Color Picker: picking, conversion and WCAG contrast use local math in this tab. EyeDropper needs a user gesture and browser support, and contrast is a formula estimate, not a certified accessibility audit." />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Image and video metadata: images are re-encoded on a Canvas, which drops EXIF and GPS but is lossy for JPEG; videos have udta, meta and XMP boxes stripped byte-for-byte without re-encoding, but vendor-specific boxes may remain.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Image pixelation: selected regions become solid mosaic blocks with fillRect, so no blur can be reversed - but a too-small selection can still leave context clues.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  JWT decoding: inspects header and claims locally; it does not verify signatures against a public key or check revocation.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  AES and Vault: envelopes use AES-256-GCM with PBKDF2 (210,000 iterations, SHA-256). Security depends entirely on the passphrase you choose. Vault share URLs keep ciphertext in the fragment, which is not sent to a server but does stay in browser history and clipboard until you clear it. There is no forward secrecy.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  CSV and JSON Anonymizer: pseudonymization uses a fast FNV-1a hash plus the salt you provide, with deterministic mapping to preserve joins. It is not a cryptographic KDF and it does not provide k-anonymity or l-diversity. Small or sparse datasets can still allow re-identification. Always review the output before sharing.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Email and Tracker Inspectors: detection is heuristic - 1x1 pixels, known tracker domains, utm and fbclid params, hidden iframes and fingerprint hints via DOMParser and regex. Novel trackers can be missed and legitimate images can be flagged. Not a replacement for a mail gateway or content security policy review.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  QR Studio: generation and decoding are bundled (qrcode and jsQR) and run on Canvas entirely offline. Scan can fail on blur, low contrast or damaged codes, and a QR code can hide any URL - verify decoded links with Link Cleaner before opening.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Color Picker: picking, conversion and WCAG contrast use local math in this tab. EyeDropper needs a user gesture and browser support, and contrast is a formula estimate, not a certified accessibility audit.
+                </Text>
+              }
+            />
           </List>
 
           <Banner
