@@ -53,10 +53,13 @@ export default function Privacy() {
           <VStack gap={2}>
             <Heading level={3}>Where computation happens</Heading>
             <Text color="secondary" display="block">
-              In this process, in RAM. Hashes use Web Crypto. Passwords use
-              crypto.getRandomValues. Images are read with FileReader / createImageBitmap
-              and never posted. Encrypted envelopes are sealed with AES-GCM after
-              PBKDF2 (210,000 iterations, SHA-256).
+              In this process, in RAM. Hashes and HMAC use Web Crypto. Passwords
+              and salts use crypto.getRandomValues. Images are read with
+              FileReader and createImageBitmap and never posted. Encrypted
+              envelopes are sealed with AES-GCM after PBKDF2 (210,000
+              iterations, SHA-256). CSV and JSON are parsed in memory, HTML is
+              parsed with DOMParser, and QR codes are rendered and decoded with
+              Canvas and bundled jsQR - all without a network request.
             </Text>
           </VStack>
         </Card>
@@ -86,16 +89,34 @@ export default function Privacy() {
       </List>
 
       <Section variant="transparent" padding={0}>
-        <VStack gap={3}>
+        <VStack gap={4}>
           <Heading level={2}>Honest limits</Heading>
           <Text color="secondary" display="block" textWrap="pretty">
-            Stripping image metadata re-encodes the pixels on a canvas, which drops
-            EXIF/GPS but is lossy for JPEG. JWT decoding inspects claims; it does
-            not verify signatures against a public key. AES envelopes are only as
-            strong as the passphrase you choose. Treat these as everyday privacy
-            utilities, not a substitute for specialist forensic or cryptographic
-            software.
+            Local processing removes the server from the threat model, but every
+            tool has trade-offs. Treat these as everyday privacy utilities, not a
+            substitute for specialist forensic or certified cryptographic software.
           </Text>
+
+          <List
+            listStyle="disc"
+            header={<Heading level={3}>What these tools do not do</Heading>}
+          >
+            <ListItem label="Image and video metadata: images are re-encoded on a Canvas, which drops EXIF and GPS but is lossy for JPEG; videos have udta, meta and XMP boxes stripped byte-for-byte without re-encoding, but vendor-specific boxes may remain." />
+            <ListItem label="Image pixelation: selected regions become solid mosaic blocks with fillRect, so no blur can be reversed - but a too-small selection can still leave context clues." />
+            <ListItem label="JWT decoding: inspects header and claims locally; it does not verify signatures against a public key or check revocation." />
+            <ListItem label="AES and Vault: envelopes use AES-256-GCM with PBKDF2 (210,000 iterations, SHA-256). Security depends entirely on the passphrase you choose. Vault share URLs keep ciphertext in the fragment, which is not sent to a server but does stay in browser history and clipboard until you clear it. There is no forward secrecy." />
+            <ListItem label="CSV and JSON Anonymizer: pseudonymization uses a fast FNV-1a hash plus the salt you provide, with deterministic mapping to preserve joins. It is not a cryptographic KDF and it does not provide k-anonymity or l-diversity. Small or sparse datasets can still allow re-identification. Always review the output before sharing." />
+            <ListItem label="Email and Tracker Inspectors: detection is heuristic - 1x1 pixels, known tracker domains, utm and fbclid params, hidden iframes and fingerprint hints via DOMParser and regex. Novel trackers can be missed and legitimate images can be flagged. Not a replacement for a mail gateway or content security policy review." />
+            <ListItem label="QR Studio: generation and decoding are bundled (qrcode and jsQR) and run on Canvas entirely offline. Scan can fail on blur, low contrast or damaged codes, and a QR code can hide any URL - verify decoded links with Link Cleaner before opening." />
+            <ListItem label="Color Picker: picking, conversion and WCAG contrast use local math in this tab. EyeDropper needs a user gesture and browser support, and contrast is a formula estimate, not a certified accessibility audit." />
+          </List>
+
+          <Banner
+            status="info"
+            title="Use with care"
+            description="A compromised device, a malicious extension, screen-capture malware or someone looking over your shoulder is not mitigated by local processing. Use a trusted computer and a locked screen."
+          />
+
           <Link href={HOME_HREF}>Back to all tools</Link>
         </VStack>
       </Section>
