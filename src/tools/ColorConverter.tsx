@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {VStack, HStack} from '@astryxdesign/core/Layout';
 import {TextInput} from '@astryxdesign/core/TextInput';
 import {Text} from '@astryxdesign/core/Text';
@@ -10,7 +10,9 @@ import {Grid} from '@astryxdesign/core/Grid';
 import {Token} from '@astryxdesign/core/Token';
 import {Banner} from '@astryxdesign/core/Banner';
 import {Divider} from '@astryxdesign/core/Divider';
+import {FileInput} from '@astryxdesign/core/FileInput';
 import {OutputRow} from '../components/OutputRow';
+import {asFile} from '../lib/files';
 
 interface Color {
   r: number;
@@ -180,6 +182,12 @@ export default function ColorConverter() {
   const [recent, setRecent] = useState<string[]>(['#1f6feb']);
   const [eyeDropperSupported, setEyeDropperSupported] = useState(false);
   const [eyeDropperError, setEyeDropperError] = useState<string | null>(null);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imageError, setImageError] = useState<string | null>(null);
+  const [hoverHex, setHoverHex] = useState<string | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     setEyeDropperSupported(typeof window !== 'undefined' && 'EyeDropper' in window);
@@ -237,6 +245,95 @@ export default function ColorConverter() {
         setEyeDropperError(msg);
       }
     }
+  };
+
+  const loadImageFromFile = (file: File) => {
+    setImageError(null);
+    if (!file.type.startsWith('image/')) {
+      setImageError('Only image files are supported.');
+      return;
+    }
+    if (file.size > 12 * 1024 * 1024) {
+      setImageError('Image is too large. Max 12 MB.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      setImageSrc(result);
+      setImageFile(file);
+    };
+    reader.onerror = () => setImageError('Could not read image.');
+    reader.readAsDataURL(file);
+  };
+
+  const handlePaste = (e: ClipboardEvent) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.kind === 'file' && item.type.startsWith('image/')) {
+        const file = item.getAsFile();
+        if (file) {
+          e.preventDefault();
+          loadImageFromFile(file);
+          return;
+        }
+      }
+    }
+  };
+
+  const drawImageToCanvas = () => {
+    const canvas = canvasRef.current;
+    const src = imageSrc;
+    if (!canvas || !src) return;
+    const img = new Image();
+    img.onload = () => {
+      imageRef.current = img;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      const maxW = 560;
+      const scale = Math.min(1, maxW / img.width);
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      canvas.width = w;
+      canvas.height = h;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(img, 0, 0, w, h);
+    };
+    img.onerror = () => setImageError('Could not decode image.');
+    img.src = src;
+  };
+
+  useEffect(() => {
+    drawImageToCanvas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageSrc]);
+
+  useEffect(() => {
+    const onPaste = (e: ClipboardEvent) => handlePaste(e);
+    window.addEventListener('paste', onPaste as unknown as EventListener);
+    return () => window.removeEventListener('paste', onPaste as unknown as EventListener);
+  }, []);
+
+  const pickFromCanvas = (clientX: number, clientY: number, commit: boolean) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = Math.floor((clientX - rect.left) * scaleX);
+    const y = Math.floor((clientY - rect.top) * scaleY);
+    if (x < 0 || y < 0 || x >= canvas.width || y >= canvas.height) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const data = ctx.getImageData(x, y, 1, 1).data;
+    const picked: Color = {r: data[0], g: data[1], b: data[2]};
+    const pickedHex = toHex(picked);
+    setHoverHex(pickedHex);
+    if (commit) updateFromColor(picked);
   };
 
   const invalid = raw.trim() !== '' && parseColor(raw) === null;
@@ -416,6 +513,92 @@ export default function ColorConverter() {
           </HStack>
         </VStack>
       )}
+
+      <Card padding={4}>
+        <VStack gap={3}>
+          <Text weight="semibold" display="block">
+            Pick from image
+          </Text>
+          <Text type="supporting" display="block">
+            Paste an image with Ctrl+V, drop it or select a file. Click anywhere on the image to pick that pixel. All decoded with Canvas locally, no upload.
+          </Text>
+          <FileInput
+            label="Image file"
+            description="PNG, JPEG, WebP up to 12 MB. Pasted images work too."
+            accept="image/*"
+            mode="dropzone"
+            value={imageFile}
+            onChange={v => {
+              const f = asFile(v);
+              setImageFile(f);
+              if (f) loadImageFromFile(f);
+              else {
+                setImageSrc(null);
+                imageRef.current = null;
+              }
+            }}
+          />
+          {imageError && <Banner status="error" title="Image error" description={imageError} />}
+          {imageSrc ? (
+            <VStack gap={2}>
+              <HStack gap={2} wrap="wrap" vAlign="center">
+                <Token label="Click image to pick" size="sm" />
+                {hoverHex && <Token label={`Hover: ${hoverHex}`} size="sm" color="orange" />}
+                <Token label={`Picked: ${hex}`} size="sm" color="green" />
+                <Button
+                  label="Remove image"
+                  variant="secondary"
+                  onClick={() => {
+                    setImageSrc(null);
+                    setImageFile(null);
+                    setHoverHex(null);
+                    setImageError(null);
+                    imageRef.current = null;
+                  }}
+                />
+              </HStack>
+              <Card padding={3} variant="muted">
+                <Center width="100%">
+                  <canvas
+                    ref={canvasRef}
+                    onClick={e => pickFromCanvas(e.clientX, e.clientY, true)}
+                    onMouseMove={e => pickFromCanvas(e.clientX, e.clientY, false)}
+                    onMouseLeave={() => setHoverHex(null)}
+                    style={{
+                      maxWidth: '100%',
+                      height: 'auto',
+                      borderRadius: 'var(--radius-control)',
+                      border: '1px solid var(--color-border)',
+                      cursor: 'crosshair',
+                      display: 'block',
+                    }}
+                  />
+                </Center>
+              </Card>
+              <HStack gap={2} vAlign="center" wrap="wrap">
+                <Center
+                  width="36px"
+                  height="36px"
+                  style={{
+                    backgroundColor: hoverHex ?? hex,
+                    borderRadius: 'var(--radius-control)',
+                    border: '1px solid var(--color-border)',
+                  }}
+                >
+                  {'\u00a0'}
+                </Center>
+                <Text type="supporting" display="block">
+                  {hoverHex ? `Hover ${hoverHex} - click to apply` : 'Move over image to preview, click to apply'}
+                </Text>
+              </HStack>
+            </VStack>
+          ) : (
+            <Text type="supporting" display="block">
+              No image loaded. Paste from clipboard or drop a file above.
+            </Text>
+          )}
+        </VStack>
+      </Card>
 
       <VStack gap={2}>
         <Text weight="semibold" display="block">
