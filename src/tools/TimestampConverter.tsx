@@ -78,7 +78,7 @@ export default function TimestampConverter() {
         <Heading level={3}>Date to timestamp</Heading>
         <TextInput
           label="Date string"
-          description="ISO 8601 works best: 2026-08-22T14:30:00Z — most human-readable formats also parse."
+          description="ISO 8601 works best: 2026-08-22T14:30:00Z - most human-readable formats also parse."
           placeholder={now.toISOString()}
           value={dateInput}
           onChange={setDateInput}

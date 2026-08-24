@@ -92,7 +92,7 @@ export function inspectHtml(html: string): TrackerReport {
         findings.push({
           severity: 'medium',
           title: 'Suspicious image URL',
-          detail: 'Image URL contains pixel/beacon/track — likely a tracker.',
+          detail: 'Image URL contains pixel/beacon/track - likely a tracker.',
           evidence: src.slice(0, 200),
         });
       }
@@ -121,7 +121,7 @@ export function inspectHtml(html: string): TrackerReport {
       findings.push({
         severity: 'low',
         title: 'External script',
-        detail: 'External script — verify the domain is expected before allowing execution.',
+        detail: 'External script - verify the domain is expected before allowing execution.',
         evidence: src.slice(0, 250),
       });
     }
@@ -188,7 +188,7 @@ export function inspectHtml(html: string): TrackerReport {
       findings.push({
         severity: 'medium',
         title: 'Meta refresh redirect',
-        detail: 'Page auto-redirects via meta refresh — can be used to bounce through a tracker.',
+        detail: 'Page auto-redirects via meta refresh - can be used to bounce through a tracker.',
         evidence: meta.outerHTML.slice(0, 250),
       });
     }
@@ -199,7 +199,7 @@ export function inspectHtml(html: string): TrackerReport {
     findings.push({
       severity: 'low',
       title: 'Many preconnect/dns-prefetch hints',
-      detail: `${beacons.length} preconnect hints — may indicate excessive third-party connections.`,
+      detail: `${beacons.length} preconnect hints - may indicate excessive third-party connections.`,
     });
   }
 

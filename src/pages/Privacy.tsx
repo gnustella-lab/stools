@@ -44,7 +44,7 @@ export default function Privacy() {
             <Text color="secondary" display="block">
               Nothing. sTools does not set cookies, does not fingerprint visitors and
               does not phone home. If this site is hosted by a third party, that host
-              may see a standard HTTP request for the HTML/JS/CSS — not the contents
+              may see a standard HTTP request for the HTML/JS/CSS - not the contents
               of the tools.
             </Text>
           </VStack>
@@ -81,7 +81,7 @@ export default function Privacy() {
       >
         <ListItem label="Disconnect from the internet after the page has loaded. The tools keep working because they do not need a server." />
         <ListItem label="Watch the Network tab while hashing a file or decoding a JWT. Your input never appears as a request payload." />
-        <ListItem label="Save the site and open the files from disk. sTools is a static build — no backend, no sync." />
+        <ListItem label="Save the site and open the files from disk. sTools is a static build - no backend, no sync." />
         <ListItem label="Read the source. Crypto lives in src/lib/crypto.ts and uses only the Web Crypto API." />
       </List>
 

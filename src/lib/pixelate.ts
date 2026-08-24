@@ -1,4 +1,4 @@
-// Region pixelation — re-encodes a chosen region so faces, plates and tokens
+// Region pixelation - re-encodes a chosen region so faces, plates and tokens
 // become unrecoverable. Runs on an offscreen canvas; no upload.
 
 export interface PixelateOptions {

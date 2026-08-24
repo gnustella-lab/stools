@@ -9,7 +9,7 @@ export function OutputRow({label, value}: {label: string; value: string | null})
         {label}
       </Text>
       <Text type="code" display="block" wordBreak="break-all">
-        {value ?? '—'}
+        {value ?? '-'}
       </Text>
       {value ? <CopyButton value={value} label="Copy" /> : null}
     </HStack>

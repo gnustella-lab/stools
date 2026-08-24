@@ -54,7 +54,7 @@ export default function ToolPage({id}: {id: string}) {
           <HStack gap={2} vAlign="center">
             <StatusDot variant="success" label="Runs locally in your browser" />
             <Text type="supporting" display="block">
-              Runs entirely in this tab — nothing is uploaded
+              Runs entirely in this tab - nothing is uploaded
             </Text>
           </HStack>
         </VStack>

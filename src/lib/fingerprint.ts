@@ -1,4 +1,4 @@
-// Browser fingerprint surface — reads only APIs the page can already see.
+// Browser fingerprint surface - reads only APIs the page can already see.
 // Nothing is transmitted; the point is to show what any site could collect.
 
 export interface FingerprintGroup {

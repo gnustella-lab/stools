@@ -57,7 +57,7 @@ export default function AesCrypt() {
           const envelope = await encryptPayload(input, passphrase, file.name);
           const name = `${file.name}.stools`;
           downloadBlob(bytesToBlob(envelope), name);
-          setNote(`Downloaded ${name} (${formatBytes(envelope.length)}). Keep the passphrase — it cannot be recovered.`);
+          setNote(`Downloaded ${name} (${formatBytes(envelope.length)}). Keep the passphrase - it cannot be recovered.`);
         } else {
           const result = await decryptPayload(input, passphrase);
           const name = result.filename || file.name.replace(/\.stools$/i, '') || 'decrypted.bin';
@@ -175,7 +175,7 @@ export default function AesCrypt() {
 
       <Text type="supporting" display="block">
         Envelope format: STLS header, original filename, random salt, 12-byte IV
-        and AES-GCM ciphertext. A wrong passphrase fails closed — there is no
+        and AES-GCM ciphertext. A wrong passphrase fails closed - there is no
         recovery.
       </Text>
     </VStack>

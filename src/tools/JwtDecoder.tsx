@@ -97,7 +97,7 @@ export default function JwtDecoder() {
               {expired
                 ? 'The exp claim is in the past.'
                 : result.decoded.signaturePresent
-                  ? 'Signature present — decoding only, not verified.'
+                  ? 'Signature present - decoding only, not verified.'
                   : 'Unsigned token (alg "none" or missing signature).'}
             </Text>
           </HStack>

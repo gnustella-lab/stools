@@ -196,7 +196,7 @@ export default function TotpGenerator() {
 
       <Text type="supporting" display="block">
         The shared secret stays in this tab and codes are derived with Web Crypto
-        HMAC. Nothing is synced or stored — closing the tab forgets everything.
+        HMAC. Nothing is synced or stored - closing the tab forgets everything.
       </Text>
     </VStack>
   );

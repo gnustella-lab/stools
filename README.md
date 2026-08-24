@@ -13,7 +13,7 @@ Live site: **https://gnustella-lab.github.io/stools/**
 
 Conventional online tools send your data to a server: passwords, tokens, JSON
 payloads and photos pass through machines you do not control, where they can be
-logged, retained or breached. sTools takes the opposite approach — every
+logged, retained or breached. sTools takes the opposite approach - every
 computation runs on your device. You can verify it: load the page once, disconnect
 from the internet and keep using every tool while watching the Network panel stay
 quiet.

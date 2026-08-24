@@ -187,7 +187,7 @@ export default function ImagePixelator() {
               onPointerUp={onPointerUp}
             />
             <Text type="supporting" display="block">
-              {dims.width} × {dims.height} px — drag on the image to select the region.
+              {dims.width} × {dims.height} px - drag on the image to select the region.
             </Text>
           </VStack>
 

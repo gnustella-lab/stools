@@ -115,7 +115,7 @@ export default function ImageMetadataInspector() {
                   ? 'EXIF could not be read'
                   : entries.length === 0
                     ? 'No EXIF metadata found'
-                    : 'Metadata found — no GPS coordinates'
+                    : 'Metadata found - no GPS coordinates'
             }
             description={
               hasGps
@@ -123,7 +123,7 @@ export default function ImageMetadataInspector() {
                 : parseError
                   ? parseError
                   : entries.length === 0
-                    ? 'No EXIF metadata was embedded — it is safe from a metadata standpoint, or the format does not carry EXIF.'
+                    ? 'No EXIF metadata was embedded - it is safe from a metadata standpoint, or the format does not carry EXIF.'
                     : 'Metadata exists but no GPS coordinates were included.'
             }
           />
@@ -138,7 +138,7 @@ export default function ImageMetadataInspector() {
             <HStack gap={2} vAlign="center">
               <StatusDot variant="neutral" label="Local analysis only" />
               <Text type="supporting" display="block">
-                Parsed locally — no upload occurred.
+                Parsed locally - no upload occurred.
               </Text>
             </HStack>
           </VStack>

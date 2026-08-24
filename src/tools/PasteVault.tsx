@@ -63,7 +63,7 @@ export default function PasteVault() {
       setOutput(b64);
       setShareUrl(buildShareUrl(b64));
       setNote(
-        'Sealed locally with AES-256-GCM + PBKDF2 (210,000 iterations). Share the URL and send the passphrase through a different channel — anyone with both can open it.',
+        'Sealed locally with AES-256-GCM + PBKDF2 (210,000 iterations). Share the URL and send the passphrase through a different channel - anyone with both can open it.',
       );
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not seal.');
@@ -97,7 +97,7 @@ export default function PasteVault() {
     <VStack gap={4}>
       <Text color="secondary" display="block" textWrap="pretty">
         Seal a note with a passphrase and share it as a self-contained link fragment. The ciphertext lives in the URL
-        after <Text type="code">#</Text> — fragments are never sent to a server and decryption happens entirely in this
+        after <Text type="code">#</Text> - fragments are never sent to a server and decryption happens entirely in this
         tab with <Text type="code">AES-GCM</Text>.
       </Text>
 

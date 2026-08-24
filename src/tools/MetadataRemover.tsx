@@ -100,7 +100,7 @@ export default function MetadataRemover() {
             <Text type="supporting" display="block">
               {kind === 'image'
                 ? 'Re-encodes the pixels so EXIF, GPS and camera tags are not copied.'
-                : 'Removes metadata boxes without re-encoding — original quality is preserved.'}
+                : 'Removes metadata boxes without re-encoding - original quality is preserved.'}
             </Text>
           </HStack>
 
@@ -111,13 +111,13 @@ export default function MetadataRemover() {
               <MetadataListItem label="Size">{formatBytes(file.size)}</MetadataListItem>
               <MetadataListItem label="Type">
                 {kind === 'image' ? 'Image' : 'Video'}
-                {file.type ? ` — ${file.type}` : ''}
+                {file.type ? ` - ${file.type}` : ''}
               </MetadataListItem>
             </MetadataList>
             <HStack gap={2} vAlign="center">
               <StatusDot variant="neutral" label="Local processing only" />
               <Text type="supporting" display="block">
-                Processed locally — no upload occurred.
+                Processed locally - no upload occurred.
               </Text>
             </HStack>
           </VStack>

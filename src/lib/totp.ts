@@ -1,4 +1,4 @@
-// TOTP (RFC 6238) — computed with Web Crypto, entirely in this tab.
+// TOTP (RFC 6238) - computed with Web Crypto, entirely in this tab.
 
 const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 

@@ -128,7 +128,7 @@ export default function CsvAnonymizer() {
       setOutput(result);
       const size = new TextEncoder().encode(result).length;
       setNote(
-        `Anonymized ${m.toUpperCase()} — ${headers.length} columns, ${formatBytes(size)} output. Salt ${salt.slice(0, 8)}… kept in memory only — same salt = same pseudonyms for joins.`,
+        `Anonymized ${m.toUpperCase()} - ${headers.length} columns, ${formatBytes(size)} output. Salt ${salt.slice(0, 8)}… kept in memory only - same salt = same pseudonyms for joins.`,
       );
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not anonymize.');
@@ -178,7 +178,7 @@ export default function CsvAnonymizer() {
 
       <FileInput
         label="CSV / JSON file (optional)"
-        description="Read locally via FileReader — never uploaded. Paste below if you prefer."
+        description="Read locally via FileReader - never uploaded. Paste below if you prefer."
         accept=".csv,.json,.txt,application/json,text/csv"
         mode="dropzone"
         value={file}
@@ -190,7 +190,7 @@ export default function CsvAnonymizer() {
 
       <TextArea
         label="Paste CSV or JSON"
-        placeholder={'name,email,phone\nAlice,alice@example.com,+55 11 99999-0000\nBob,bob@example.com,+55 21 98888-1111\n\n— or —\n[{"name":"Alice","email":"alice@example.com"}]'}
+        placeholder={'name,email,phone\nAlice,alice@example.com,+55 11 99999-0000\nBob,bob@example.com,+55 21 98888-1111\n\n- or -\n[{"name":"Alice","email":"alice@example.com"}]'}
         value={inputText}
         onChange={v => {
           setInputText(v);
@@ -204,7 +204,7 @@ export default function CsvAnonymizer() {
         <Card padding={4} variant="muted">
           <VStack gap={3}>
             <Text weight="semibold" display="block">
-              Columns — choose a strategy per field
+              Columns - choose a strategy per field
             </Text>
             <Text type="supporting" display="block">
               Pseudonymize is deterministic with the salt (same email → same token, good for joins). Mask keeps shape.
@@ -253,7 +253,7 @@ export default function CsvAnonymizer() {
         </Text>
         <Text type="supporting" display="block" textWrap="pretty">
           No mapping leaves the browser. Pseudonyms are derived with a fast non-cryptographic hash + salt for
-          demo/utility use — for high-risk datasets use a stronger KDF and audit re-identification risk (k-anonymity).
+          demo/utility use - for high-risk datasets use a stronger KDF and audit re-identification risk (k-anonymity).
           Review the output before sharing.
         </Text>
       </VStack>

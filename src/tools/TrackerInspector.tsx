@@ -120,7 +120,7 @@ export default function TrackerInspector() {
 
       <Divider />
       <Text type="supporting" display="block" textWrap="pretty">
-        All parsing runs with the browser&apos;s built-in HTML parser. No network request is made — verify in the Network
+        All parsing runs with the browser&apos;s built-in HTML parser. No network request is made - verify in the Network
         panel.
       </Text>
     </VStack>

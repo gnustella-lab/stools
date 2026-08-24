@@ -84,7 +84,7 @@ export default function QrStudio() {
     <VStack gap={4}>
       <Text color="secondary" display="block" textWrap="pretty">
         Generate QR codes for URLs, WiFi, Pix or secrets without calling an external API, and scan QR images locally.
-        Rendering uses Canvas and decoding uses <Text type="code">jsQR</Text> — both bundled, both offline.
+        Rendering uses Canvas and decoding uses <Text type="code">jsQR</Text> - both bundled, both offline.
       </Text>
 
       <SegmentedControl label="Mode" value={mode} onChange={v => setMode(v as QrMode)}>
@@ -96,7 +96,7 @@ export default function QrStudio() {
         <VStack gap={4}>
           <TextArea
             label="Text to encode"
-            placeholder="https://example.com  —  WIFI:T:WPA;S:MyNetwork;P:secret;;  —  pix key  —  any text"
+            placeholder="https://example.com  -  WIFI:T:WPA;S:MyNetwork;P:secret;;  -  pix key  -  any text"
             value={text}
             onChange={setText}
             rows={3}
@@ -111,10 +111,10 @@ export default function QrStudio() {
               value={ecc}
               onChange={v => setEcc(v as Ecc)}
               options={[
-                {value: 'L', label: 'L — 7%'},
-                {value: 'M', label: 'M — 15%'},
-                {value: 'Q', label: 'Q — 25%'},
-                {value: 'H', label: 'H — 30%'},
+                {value: 'L', label: 'L - 7%'},
+                {value: 'M', label: 'M - 15%'},
+                {value: 'Q', label: 'Q - 25%'},
+                {value: 'H', label: 'H - 30%'},
               ]}
             />
           </HStack>
@@ -157,7 +157,7 @@ export default function QrStudio() {
         <VStack gap={4}>
           <FileInput
             label="QR image to scan"
-            description="PNG, JPEG or WebP — decoded locally with jsQR, never uploaded."
+            description="PNG, JPEG or WebP - decoded locally with jsQR, never uploaded."
             accept="image/*"
             mode="dropzone"
             value={scanFile}
@@ -179,7 +179,7 @@ export default function QrStudio() {
                   {scanResult}
                 </Text>
                 <Text type="supporting" display="block">
-                  Verify the URL before opening — QR codes can hide tracking or phishing links. Paste the decoded URL into
+                  Verify the URL before opening - QR codes can hide tracking or phishing links. Paste the decoded URL into
                   Link Cleaner to strip trackers first.
                 </Text>
               </VStack>

@@ -46,7 +46,7 @@ export const REDACTION_RULES: RedactionRule[] = [
   {
     id: 'card',
     label: 'Payment card numbers',
-    description: '13–19 digit sequences that look like card numbers.',
+    description: '13-19 digit sequences that look like card numbers.',
     pattern: /\b(?:\d[ -]*?){13,19}\b/g,
     replacement: '[REDACTED:card]',
   },

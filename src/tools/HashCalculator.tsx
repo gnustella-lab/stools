@@ -113,7 +113,7 @@ export default function HashCalculator() {
       {mode === 'text' ? (
         <TextArea
           label="Text to hash"
-          placeholder="Type or paste text — digests update as you type"
+          placeholder="Type or paste text - digests update as you type"
           value={text}
           onChange={setText}
           rows={6}

@@ -35,7 +35,7 @@ export default function EmailPrivacyInspector() {
       <Text color="secondary" display="block" textWrap="pretty">
         Paste the raw source of an email (File → Show original / View source) to reveal hidden tracking pixels,
         mismatched Reply-To, bulk-mail flags and link trackers. Parsing uses only <Text type="code">DOMParser</Text> and
-        regex — nothing is sent anywhere.
+        regex - nothing is sent anywhere.
       </Text>
 
       <TextArea

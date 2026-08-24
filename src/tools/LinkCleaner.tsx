@@ -63,7 +63,7 @@ export default function LinkCleaner() {
     <VStack gap={4}>
       <TextArea
         label="Links to clean"
-        placeholder="Paste one or more URLs — separated by spaces or newlines…"
+        placeholder="Paste one or more URLs - separated by spaces or newlines…"
         value={input}
         onChange={setInput}
         rows={5}
@@ -114,7 +114,7 @@ export default function LinkCleaner() {
 
       <Text type="supporting" display="block">
         Links are parsed and rebuilt locally with the standard URL API. Some sites
-        may require additional parameters that are not on this list — always check
+        may require additional parameters that are not on this list - always check
         the page still works before sharing.
       </Text>
     </VStack>

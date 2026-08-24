@@ -105,7 +105,7 @@ function rewrite(
 
   while (offset < end) {
     if (end - offset < 8) {
-      // Malformed tail — keep the remaining bytes untouched instead of failing.
+      // Malformed tail - keep the remaining bytes untouched instead of failing.
       const tail = slice(view, offset, end);
       parts.push(tail);
       size += end - offset;
@@ -173,7 +173,7 @@ export async function stripVideoMetadata(file: File): Promise<VideoStripResult> 
 
   if (!looksLikeIsoBmff(view)) {
     throw new Error(
-      'Not an MP4/MOV file. Only ISO-BMFF containers (MP4, M4V, MOV, 3GP) are supported — WebM/MKV must be re-exported.',
+      'Not an MP4/MOV file. Only ISO-BMFF containers (MP4, M4V, MOV, 3GP) are supported - WebM/MKV must be re-exported.',
     );
   }
 

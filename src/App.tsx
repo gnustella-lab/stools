@@ -13,7 +13,7 @@ import Privacy from './pages/Privacy';
 import ToolPage from './pages/ToolPage';
 import {findTool} from './tools/registry';
 
-const HOME_TITLE = 'sTools — Private tools that never leave your browser';
+const HOME_TITLE = 'sTools - Private tools that never leave your browser';
 
 export default function App() {
   const route = useRoute();
@@ -24,11 +24,11 @@ export default function App() {
       return;
     }
     if (route.name === 'privacy') {
-      document.title = 'Privacy — sTools';
+      document.title = 'Privacy - sTools';
       return;
     }
     const tool = findTool(route.id);
-    document.title = tool ? `${tool.name} — sTools` : 'Tool not found — sTools';
+    document.title = tool ? `${tool.name} - sTools` : 'Tool not found - sTools';
   }, [route]);
 
   return (

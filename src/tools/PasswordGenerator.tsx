@@ -127,7 +127,7 @@ export default function PasswordGenerator() {
       {generated && (
         <HStack gap={2} vAlign="center">
           <Text type="supporting" display="block">
-            Estimated strength: {formatEntropyBits(entropyBits)} — {strength.label}
+            Estimated strength: {formatEntropyBits(entropyBits)} - {strength.label}
           </Text>
         </HStack>
       )}
@@ -143,17 +143,17 @@ export default function PasswordGenerator() {
             onChangeEnd={generate}
           />
           <Switch
-            label="Lowercase letters (a–z)"
+            label="Lowercase letters (a-z)"
             value={opts.lower}
             onChange={v => setOpts({...opts, lower: v})}
           />
           <Switch
-            label="Uppercase letters (A–Z)"
+            label="Uppercase letters (A-Z)"
             value={opts.upper}
             onChange={v => setOpts({...opts, upper: v})}
           />
           <Switch
-            label="Digits (0–9)"
+            label="Digits (0-9)"
             value={opts.digits}
             onChange={v => setOpts({...opts, digits: v})}
           />

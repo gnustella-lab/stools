@@ -109,7 +109,7 @@ export function inspectEmail(raw: string): EmailInspection {
       findings.push({
         severity: 'medium',
         title: 'Return-Path domain mismatch',
-        detail: `From domain (${fromDomain}) differs from Return-Path (${returnDomain}) — common in forwarded or spoofed mail.`,
+        detail: `From domain (${fromDomain}) differs from Return-Path (${returnDomain}) - common in forwarded or spoofed mail.`,
         evidence: `From: ${from} | Return-Path: ${returnPath}`,
       });
     }
@@ -132,13 +132,13 @@ export function inspectEmail(raw: string): EmailInspection {
     findings.push({
       severity: 'low',
       title: 'No authentication results',
-      detail: 'No DKIM/SPF Authentication-Results header found. The message may be unauthenticated — treat links with caution.',
+      detail: 'No DKIM/SPF Authentication-Results header found. The message may be unauthenticated - treat links with caution.',
     });
   } else if (auth.toLowerCase().includes('fail')) {
     findings.push({
       severity: 'high',
       title: 'Authentication failure',
-      detail: 'SPF, DKIM or DMARC reported failure in Authentication-Results — possible spoofing.',
+      detail: 'SPF, DKIM or DMARC reported failure in Authentication-Results - possible spoofing.',
       evidence: auth.slice(0, 200),
     });
   }
@@ -149,7 +149,7 @@ export function inspectEmail(raw: string): EmailInspection {
     findings.push({
       severity: 'info',
       title: 'Bulk / marketing mail',
-      detail: 'Precedence: bulk or List-Unsubscribe present — this is mass mail. Extra tracking is likely.',
+      detail: 'Precedence: bulk or List-Unsubscribe present - this is mass mail. Extra tracking is likely.',
       evidence: listUnsub || precedence,
     });
   }
@@ -170,7 +170,7 @@ export function inspectEmail(raw: string): EmailInspection {
         severity: isTiny ? 'high' : 'medium',
         title: isTiny ? '1×1 tracking pixel detected' : 'Suspicious tracking image',
         detail: isTiny
-          ? 'A 1×1 image is used to confirm you opened this email — it can leak IP, time and device.'
+          ? 'A 1×1 image is used to confirm you opened this email - it can leak IP, time and device.'
           : 'Image URL contains tracking hints (open/track/pixel/analytics).',
         evidence: tag.slice(0, 200),
       });
@@ -202,7 +202,7 @@ export function inspectEmail(raw: string): EmailInspection {
     findings.push({
       severity: 'info',
       title: 'Mailer fingerprint',
-      detail: `X-Mailer reveals the sending software: ${xMailer.slice(0, 120)} — useful to verify bulk senders.`,
+      detail: `X-Mailer reveals the sending software: ${xMailer.slice(0, 120)} - useful to verify bulk senders.`,
     });
   }
 

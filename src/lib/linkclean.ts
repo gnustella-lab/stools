@@ -1,4 +1,4 @@
-// URL tracking-parameter stripping — parsed and rebuilt locally.
+// URL tracking-parameter stripping - parsed and rebuilt locally.
 
 export interface LinkRule {
   id: string;

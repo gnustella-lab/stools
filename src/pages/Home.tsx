@@ -75,7 +75,7 @@ export default function Home() {
           </Heading>
           <Text type="large" color="secondary" display="block" textWrap="pretty">
             sTools is a collection of everyday security, encoding and data utilities.
-            Every computation runs in your browser — no uploads, no accounts, no
+            Every computation runs in your browser - no uploads, no accounts, no
             tracking. Open a tool, use it, close the tab.
           </Text>
         </VStack>
@@ -107,7 +107,7 @@ export default function Home() {
           <Heading level={2}>All tools</Heading>
           <TextInput
             label="Search tools"
-            placeholder="Search by name or keyword — try hash, jwt, exif, encrypt…"
+            placeholder="Search by name or keyword - try hash, jwt, exif, encrypt…"
             value={query}
             onChange={setQuery}
             hasClear
@@ -189,7 +189,7 @@ export default function Home() {
             Conventional online tools send your data to a server: passwords, tokens,
             JSON payloads and photos pass through machines you do not control, where
             they can be logged, retained or breached. sTools takes the opposite
-            approach — every computation runs here, using standard browser APIs.
+            approach - every computation runs here, using standard browser APIs.
           </Text>
           <Link href={PRIVACY_HREF}>Read the full privacy model</Link>
         </VStack>
@@ -199,7 +199,7 @@ export default function Home() {
         <Divider />
         <VStack gap={1} paddingBlock={4}>
           <Text type="supporting" display="block">
-            sTools — privacy-first utilities. All processing is local.
+            sTools - privacy-first utilities. All processing is local.
           </Text>
         </VStack>
       </Section>

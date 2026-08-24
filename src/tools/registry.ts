@@ -74,7 +74,7 @@ export const TOOLS: ToolDef[] = [
     name: 'JWT Decoder',
     tagline: 'Inspect token header and claims',
     description:
-      'Decode JSON Web Tokens to inspect the algorithm and payload claims. Decoding happens locally — signature is never verified against a server.',
+      'Decode JSON Web Tokens to inspect the algorithm and payload claims. Decoding happens locally - signature is never verified against a server.',
     category: 'Security',
     icon: TicketIcon,
     keywords: ['jwt', 'token', 'auth', 'claims', 'decode'],
@@ -85,7 +85,7 @@ export const TOOLS: ToolDef[] = [
     name: 'AES Encrypt / Decrypt',
     tagline: 'Seal text and files with AES-GCM',
     description:
-      'Encrypt and decrypt text or local files with a passphrase. Keys are derived in-browser with PBKDF2 and AES-256-GCM — the plaintext never leaves this tab.',
+      'Encrypt and decrypt text or local files with a passphrase. Keys are derived in-browser with PBKDF2 and AES-256-GCM - the plaintext never leaves this tab.',
     category: 'Security',
     icon: LockClosedIcon,
     keywords: ['aes', 'encrypt', 'decrypt', 'gcm', 'password', 'cipher', 'seal'],
@@ -140,7 +140,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Timestamp Converter',
     tagline: 'Unix epoch ⇄ human readable dates',
     description:
-      'Convert Unix timestamps (seconds or milliseconds) to ISO 8601, UTC and locale strings — and back.',
+      'Convert Unix timestamps (seconds or milliseconds) to ISO 8601, UTC and locale strings - and back.',
     category: 'Data',
     icon: ClockIcon,
     keywords: ['unix', 'epoch', 'timestamp', 'date', 'time', 'iso'],
@@ -162,7 +162,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Image Metadata Inspector',
     tagline: 'Reveal EXIF before you share',
     description:
-      'Inspect JPEG metadata — EXIF, GPS coordinates and camera details — locally, so you know exactly what a photo leaks before posting it.',
+      'Inspect JPEG metadata - EXIF, GPS coordinates and camera details - locally, so you know exactly what a photo leaks before posting it.',
     category: 'Media',
     icon: PhotoIcon,
     keywords: ['exif', 'metadata', 'jpeg', 'jpg', 'gps', 'photo', 'privacy'],
@@ -173,7 +173,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Metadata Remover',
     tagline: 'Strip EXIF from images and MP4/MOV metadata',
     description:
-      'Remove EXIF, GPS coordinates and camera tags from images, or drop metadata boxes from MP4, M4V and MOV videos — all locally, with no upload.',
+      'Remove EXIF, GPS coordinates and camera tags from images, or drop metadata boxes from MP4, M4V and MOV videos - all locally, with no upload.',
     category: 'Media',
     icon: TrashIcon,
     keywords: ['exif', 'metadata', 'remove', 'strip', 'gps', 'mp4', 'mov', 'video', 'privacy', 'clean'],
@@ -195,7 +195,7 @@ export const TOOLS: ToolDef[] = [
     name: 'TOTP Generator',
     tagline: 'Offline 2FA codes without a synced app',
     description:
-      'Generate RFC 6238 time-based one-time passwords from an otpauth:// URI or Base32 secret. Codes are derived locally with Web Crypto — the secret never reaches a server.',
+      'Generate RFC 6238 time-based one-time passwords from an otpauth:// URI or Base32 secret. Codes are derived locally with Web Crypto - the secret never reaches a server.',
     category: 'Security',
     icon: CursorArrowRaysIcon,
     keywords: ['totp', '2fa', 'mfa', 'otp', 'authenticator', 'one-time password', 'rfc6238', 'privacy'],
@@ -217,7 +217,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Browser Fingerprint Panel',
     tagline: 'See what your browser reveals about you',
     description:
-      'Inspect the canvas, WebGL, audio, hardware and preference signals that fingerprinting scripts read. A local mirror only — nothing is reported anywhere.',
+      'Inspect the canvas, WebGL, audio, hardware and preference signals that fingerprinting scripts read. A local mirror only - nothing is reported anywhere.',
     category: 'Security',
     icon: EyeSlashIcon,
     keywords: ['fingerprint', 'canvas', 'webgl', 'audio', 'tracking', 'browser', 'entropy', 'privacy'],
@@ -272,7 +272,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Email Privacy Inspector',
     tagline: 'Reveal hidden pixels and spoofing signals',
     description:
-      'Paste raw email source to detect 1×1 tracking pixels, Reply-To mismatches, bulk-mail flags and link trackers. Parsed locally with DOMParser and regex — never sent.',
+      'Paste raw email source to detect 1×1 tracking pixels, Reply-To mismatches, bulk-mail flags and link trackers. Parsed locally with DOMParser and regex - never sent.',
     category: 'Security',
     icon: EnvelopeIcon,
     keywords: ['email', 'pixel', 'tracking', 'spoof', 'dkim', 'spf', 'privacy', 'eml'],
@@ -305,7 +305,7 @@ export const TOOLS: ToolDef[] = [
     name: 'QR Studio',
     tagline: 'Generate and scan QR codes offline',
     description:
-      'Create QR codes for URLs, WiFi, Pix or secrets on a Canvas and scan QR images with jsQR — both bundled and offline. No external API ever sees your data.',
+      'Create QR codes for URLs, WiFi, Pix or secrets on a Canvas and scan QR images with jsQR - both bundled and offline. No external API ever sees your data.',
     category: 'Media',
     icon: QrCodeIcon,
     keywords: ['qr', 'qrcode', 'scan', 'wifi', 'pix', 'offline', 'privacy', 'canvas'],

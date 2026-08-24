@@ -62,7 +62,7 @@ export default function CaseConverter() {
     <VStack gap={4}>
       <TextArea
         label="Input text"
-        placeholder="Paste any text — mixedCase, snake_case, spaces, dashes…"
+        placeholder="Paste any text - mixedCase, snake_case, spaces, dashes…"
         value={input}
         onChange={setInput}
         rows={4}
@@ -76,7 +76,7 @@ export default function CaseConverter() {
               {result.label}
             </Text>
             <Text type="code" display="block" wordBreak="break-all">
-              {result.value || '—'}
+              {result.value || '-'}
             </Text>
             <CopyButton value={result.value} label="Copy" />
           </HStack>
