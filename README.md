@@ -120,4 +120,4 @@ input may ever leave the tab.
 
 ## License
 
-MIT
+[MIT](LICENSE) © gnustella-lab
