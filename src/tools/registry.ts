@@ -148,13 +148,13 @@ export const TOOLS: ToolDef[] = [
   },
   {
     id: 'color-converter',
-    name: 'Color Converter',
-    tagline: 'HEX, RGB and HSL conversions',
+    name: 'Color Picker',
+    tagline: 'Visual picker with HEX, RGB and HSL',
     description:
-      'Convert colors between HEX, RGB and HSL notations with a live preview and copyable CSS values.',
+      'Pick colors visually with a native color input, RGB and HSL sliders, EyeDropper, palette and harmonies. All conversions run locally with live preview and WCAG contrast.',
     category: 'Data',
     icon: SwatchIcon,
-    keywords: ['color', 'hex', 'rgb', 'hsl', 'css'],
+    keywords: ['color', 'picker', 'hex', 'rgb', 'hsl', 'palette', 'eyedropper', 'contrast', 'css'],
     component: lazy(() => import('./ColorConverter')),
   },
   {
