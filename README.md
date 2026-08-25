@@ -55,7 +55,6 @@ quiet.
 | **Timestamp Converter** | Unix epoch ⇄ ISO 8601, UTC and locale strings |
 | **Color Converter** | HEX ⇄ RGB ⇄ HSL with live preview |
 | **CSV / JSON Anonymizer** | Pseudonymize, mask, hash or drop columns locally; the same salt keeps joins consistent |
-| **Test Identity Generator** | Synthetic names, addresses and documents (CPF / SSN / ID) with valid check digits for QA and mockups |
 | **Location Track Anonymizer** | Round and shift GPX / GeoJSON coordinates; drop timestamps, elevation and names before publishing |
 
 ### Media
@@ -115,7 +114,6 @@ node --experimental-strip-types scripts/test-linkclean.ts         # tracking-par
 node --experimental-strip-types scripts/test-homograph.ts         # mixed-script / lookalike detection
 node --experimental-strip-types scripts/test-harSanitize.ts       # HAR Authorization / token / IP redaction
 node --experimental-strip-types scripts/test-passwordStrength.ts  # common vs long-random scoring
-node --experimental-strip-types scripts/test-identity.ts          # CPF / CNPJ check digits
 node --experimental-strip-types scripts/test-geoanonymize.ts      # GPX rounding and timestamp strip
 ```
 

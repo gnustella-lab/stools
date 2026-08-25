@@ -207,13 +207,6 @@ export default function Privacy() {
             <ListItem
               label={
                 <Text display="block" textWrap="pretty">
-                  Test Identity Generator: names and documents are synthetic. CPF/CNPJ values have valid check digits but are not assigned to anyone - do not submit them to government or financial systems.
-                </Text>
-              }
-            />
-            <ListItem
-              label={
-                <Text display="block" textWrap="pretty">
                   Location Track Anonymizer: rounding and noise still leave the neighbourhood visible, and a unique route shape can re-identify a person. No map tiles are fetched; review the output in a local GIS tool before publishing.
                 </Text>
               }

@@ -27,7 +27,6 @@ import {
   ChartBarIcon,
   GlobeAltIcon,
   DocumentMinusIcon,
-  UserPlusIcon,
   MapPinIcon,
 } from '@heroicons/react/24/outline';
 import type {ToolDef, ToolCategory} from './types';
@@ -293,17 +292,6 @@ export const TOOLS: ToolDef[] = [
     icon: TableCellsIcon,
     keywords: ['anonymize', 'pseudonymize', 'csv', 'json', 'gdpr', 'lgpd', 'privacy', 'dataset'],
     component: lazy(() => import('./CsvAnonymizer')),
-  },
-  {
-    id: 'identity-generator',
-    name: 'Test Identity Generator',
-    tagline: 'Disposable people for forms and screenshots',
-    description:
-      'Generate synthetic names, addresses, emails and documents (CPF, SSN or generic IDs) for QA and mockups so you never type a real identity into a staging site. Check digits are valid; records are random.',
-    category: 'Data',
-    icon: UserPlusIcon,
-    keywords: ['identity', 'fake', 'cpf', 'ssn', 'persona', 'fixture', 'qa', 'privacy', 'synthetic'],
-    component: lazy(() => import('./IdentityGenerator')),
   },
   {
     id: 'location-anonymizer',
