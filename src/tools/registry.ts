@@ -24,6 +24,11 @@ import {
   EyeIcon,
   ArchiveBoxIcon,
   QrCodeIcon,
+  ChartBarIcon,
+  GlobeAltIcon,
+  DocumentMinusIcon,
+  UserPlusIcon,
+  MapPinIcon,
 } from '@heroicons/react/24/outline';
 import type {ToolDef, ToolCategory} from './types';
 
@@ -46,6 +51,17 @@ export const TOOLS: ToolDef[] = [
     icon: KeyIcon,
     keywords: ['password', 'passphrase', 'random', 'entropy', 'diceware'],
     component: lazy(() => import('./PasswordGenerator')),
+  },
+  {
+    id: 'password-analyzer',
+    name: 'Password Analyzer',
+    tagline: 'Score a secret without sending it anywhere',
+    description:
+      'Estimate password strength from length, character classes, common lists, keyboard walks and 1337 substitutions. Scoring stays in this tab - no breach corpus is queried.',
+    category: 'Security',
+    icon: ChartBarIcon,
+    keywords: ['password', 'strength', 'entropy', 'zxcvbn', 'passphrase', 'privacy', 'offline'],
+    component: lazy(() => import('./PasswordAnalyzer')),
   },
   {
     id: 'hash-calculator',
@@ -213,6 +229,17 @@ export const TOOLS: ToolDef[] = [
     component: lazy(() => import('./LinkCleaner')),
   },
   {
+    id: 'homograph-detector',
+    name: 'Homograph Detector',
+    tagline: 'Spot lookalike letters in URLs and emails',
+    description:
+      'Reveal mixed scripts, punycode, zero-width characters and Cyrillic/Greek lookalikes that spoof Latin letters. Comparison uses local Unicode data - nothing is resolved on the network.',
+    category: 'Security',
+    icon: GlobeAltIcon,
+    keywords: ['homograph', 'idn', 'punycode', 'phishing', 'lookalike', 'cyrillic', 'unicode', 'privacy'],
+    component: lazy(() => import('./HomographDetector')),
+  },
+  {
     id: 'fingerprint-panel',
     name: 'Browser Fingerprint Panel',
     tagline: 'See what your browser reveals about you',
@@ -268,6 +295,28 @@ export const TOOLS: ToolDef[] = [
     component: lazy(() => import('./CsvAnonymizer')),
   },
   {
+    id: 'identity-generator',
+    name: 'Test Identity Generator',
+    tagline: 'Disposable people for forms and screenshots',
+    description:
+      'Generate synthetic names, addresses, emails and documents (CPF, SSN or generic IDs) for QA and mockups so you never type a real identity into a staging site. Check digits are valid; records are random.',
+    category: 'Data',
+    icon: UserPlusIcon,
+    keywords: ['identity', 'fake', 'cpf', 'ssn', 'persona', 'fixture', 'qa', 'privacy', 'synthetic'],
+    component: lazy(() => import('./IdentityGenerator')),
+  },
+  {
+    id: 'location-anonymizer',
+    name: 'Location Track Anonymizer',
+    tagline: 'Fuzz GPX and GeoJSON before you publish',
+    description:
+      'Round and shift coordinates, drop timestamps, elevation and names from GPX or GeoJSON tracks. Everything runs locally - no map tiles are fetched.',
+    category: 'Data',
+    icon: MapPinIcon,
+    keywords: ['gpx', 'geojson', 'gps', 'anonymize', 'track', 'location', 'privacy', 'fuzz'],
+    component: lazy(() => import('./LocationAnonymizer')),
+  },
+  {
     id: 'email-privacy-inspector',
     name: 'Email Privacy Inspector',
     tagline: 'Reveal hidden pixels and spoofing signals',
@@ -288,6 +337,17 @@ export const TOOLS: ToolDef[] = [
     icon: EyeIcon,
     keywords: ['tracker', 'pixel', 'html', 'sanitize', 'utm', 'privacy', 'beacon', 'script'],
     component: lazy(() => import('./TrackerInspector')),
+  },
+  {
+    id: 'har-sanitizer',
+    name: 'HAR Sanitizer',
+    tagline: 'Redact cookies, tokens and IPs from captures',
+    description:
+      'Strip cookies, Authorization headers, query tokens, JWTs, PEM keys and IP addresses from HAR or JSON captures before you attach them to a ticket. Parsing stays in this tab.',
+    category: 'Security',
+    icon: DocumentMinusIcon,
+    keywords: ['har', 'sanitize', 'redact', 'cookie', 'authorization', 'devtools', 'capture', 'privacy'],
+    component: lazy(() => import('./HarSanitizer')),
   },
   {
     id: 'paste-vault',

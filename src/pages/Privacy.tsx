@@ -58,8 +58,10 @@ export default function Privacy() {
               FileReader and createImageBitmap and never posted. Encrypted
               envelopes are sealed with AES-GCM after PBKDF2 (210,000
               iterations, SHA-256). CSV and JSON are parsed in memory, HTML is
-              parsed with DOMParser, and QR codes are rendered and decoded with
-              Canvas and bundled jsQR - all without a network request.
+              parsed with DOMParser, QR codes are rendered and decoded with
+              Canvas and bundled jsQR, HAR captures are walked in memory, and
+              GPX / GeoJSON tracks are rewritten locally - all without a
+              network request.
             </Text>
           </VStack>
         </Card>
@@ -178,6 +180,41 @@ export default function Privacy() {
               label={
                 <Text display="block" textWrap="pretty">
                   Color Picker: picking, conversion and WCAG contrast use local math in this tab. EyeDropper needs a user gesture and browser support, and contrast is a formula estimate, not a certified accessibility audit.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Homograph Detector: mixed-script, punycode and lookalike checks use a local Unicode table. Novel confusables can be missed, and nothing is resolved against DNS or a registrar.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  HAR Sanitizer: redaction is name- and pattern-based (cookies, Authorization, tokens, JWTs, PEM keys, IPs). Unusual header names or secrets inside opaque binary bodies can slip through - skim the output before sharing.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Password Analyzer: entropy and findings are a local estimate against a small offline common-password list. It does not query Have I Been Pwned or any breach corpus, and a high score is not a guarantee.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Test Identity Generator: names and documents are synthetic. CPF/CNPJ values have valid check digits but are not assigned to anyone - do not submit them to government or financial systems.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
+                  Location Track Anonymizer: rounding and noise still leave the neighbourhood visible, and a unique route shape can re-identify a person. No map tiles are fetched; review the output in a local GIS tool before publishing.
                 </Text>
               }
             />

@@ -1,4 +1,4 @@
-import {cleanLink, LINK_RULES} from '../src/lib/linkclean';
+import {cleanLink, LINK_RULES} from '../src/lib/linkclean.ts';
 
 const groups = new Set(LINK_RULES.map(r => r.id));
 const r1 = cleanLink('https://exemplo.com/pag?utm_source=news&utm_medium=email&id=42', groups);

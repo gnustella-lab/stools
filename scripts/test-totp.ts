@@ -1,6 +1,6 @@
 // RFC 6238 Appendix B test vectors, secret = ASCII "12345678901234567890".
 // Run with: npx tsx scripts/test-totp.ts   (or vite-node)
-import {computeTotp} from '../src/lib/totp';
+import {computeTotp} from '../src/lib/totp.ts';
 
 const SECRET_B32 = 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ'; // base32 of the ASCII secret
 

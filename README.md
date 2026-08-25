@@ -25,6 +25,7 @@ quiet.
 | Tool | What it does |
 | --- | --- |
 | **Password Generator** | Cryptographically secure passwords and diceware-style passphrases from OS randomness |
+| **Password Analyzer** | Local strength estimate (length, classes, common lists, keyboard walks, 1337) - no online breach lookup |
 | **Hash Calculator** | SHA-1/256/384/512 digests of text or local files for integrity checks |
 | **HMAC Calculator** | HMAC-SHA-256/384/512 of text or files with a secret that never leaves the device |
 | **AES Encrypt / Decrypt** | Seal text and files with AES-256-GCM after PBKDF2 (210,000 iterations) |
@@ -32,7 +33,12 @@ quiet.
 | **UUID Generator** | Bulk RFC 4122 v4 identifiers for logs, fixtures and databases |
 | **TOTP Generator** | RFC 6238 2FA codes from an `otpauth://` URI or Base32 secret, computed with Web Crypto HMAC (validated against the official RFC test vectors) |
 | **Link Cleaner** | Strip `utm_*`, `fbclid`, `gclid` and 45+ other tracking parameters from links, one at a time or in bulk |
+| **Homograph Detector** | Flag mixed scripts, punycode, zero-width characters and lookalike letters in URLs, emails and domains |
 | **Browser Fingerprint Panel** | Mirror what any site could read right now: canvas hash, WebGL vendor/renderer, audio context, hardware, timezone and preference signals |
+| **Email Privacy Inspector** | Parse raw email source for 1×1 tracking pixels, Reply-To mismatches, bulk-mail flags and link trackers |
+| **Tracker Inspector** | Enumerate tracking pixels, third-party scripts, hidden iframes and `utm_*`/`fbclid` links in pasted HTML |
+| **HAR Sanitizer** | Redact cookies, Authorization headers, query tokens, JWTs, PEM keys and IPs from HAR or JSON captures |
+| **Paste Vault** | Seal a note with AES-256-GCM + PBKDF2 and share it as a URL fragment that never reaches a server |
 
 ### Encoding
 
@@ -48,6 +54,9 @@ quiet.
 | **JSON Formatter** | Validate, prettify and minify JSON with precise error reporting |
 | **Timestamp Converter** | Unix epoch ⇄ ISO 8601, UTC and locale strings |
 | **Color Converter** | HEX ⇄ RGB ⇄ HSL with live preview |
+| **CSV / JSON Anonymizer** | Pseudonymize, mask, hash or drop columns locally; the same salt keeps joins consistent |
+| **Test Identity Generator** | Synthetic names, addresses and documents (CPF / SSN / ID) with valid check digits for QA and mockups |
+| **Location Track Anonymizer** | Round and shift GPX / GeoJSON coordinates; drop timestamps, elevation and names before publishing |
 
 ### Media
 
@@ -56,6 +65,7 @@ quiet.
 | **Image Metadata Inspector** | Reveal EXIF, GPS coordinates and camera details before sharing a JPEG |
 | **Metadata Remover** | Strip EXIF/GPS from images by re-encoding; drop metadata boxes (`udta`, `meta`, XMP) from MP4/MOV byte-for-byte without re-encoding |
 | **Image Pixelator** | Drag-select a region and download a censored copy: solid mosaic blocks painted with `fillRect`, so no engine smoothing can soften them and no blur can be reversed |
+| **QR Studio** | Generate QR codes for URLs, Wi-Fi, Pix or secrets and scan QR images with bundled jsQR - both offline |
 
 ### Text
 
@@ -97,11 +107,16 @@ npm run preview   # serve the production build locally
 
 ### Tests
 
-Small script-based checks live in `scripts/` and run with `vite-node`:
+Small script-based checks live in `scripts/` and run with Node 22's TypeScript strip-types (no extra runner):
 
 ```bash
-npx vite-node scripts/test-totp.ts        # RFC 6238 Appendix B vectors (6/6 PASS)
-npx vite-node scripts/test-linkclean.ts   # tracking-param stripping cases
+node --experimental-strip-types scripts/test-totp.ts              # RFC 6238 Appendix B vectors
+node --experimental-strip-types scripts/test-linkclean.ts         # tracking-param stripping cases
+node --experimental-strip-types scripts/test-homograph.ts         # mixed-script / lookalike detection
+node --experimental-strip-types scripts/test-harSanitize.ts       # HAR Authorization / token / IP redaction
+node --experimental-strip-types scripts/test-passwordStrength.ts  # common vs long-random scoring
+node --experimental-strip-types scripts/test-identity.ts          # CPF / CNPJ check digits
+node --experimental-strip-types scripts/test-geoanonymize.ts      # GPX rounding and timestamp strip
 ```
 
 ## Deployment
