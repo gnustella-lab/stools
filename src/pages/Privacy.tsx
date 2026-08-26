@@ -200,6 +200,13 @@ export default function Privacy() {
             <ListItem
               label={
                 <Text display="block" textWrap="pretty">
+                  Cookie and Privacy Header Inspectors: these tools make local, heuristic configuration checks from pasted headers. They do not contact a URL, observe redirects or prove a site&apos;s consent, authentication or privacy-law compliance. Cookie values are intentionally never rendered in Cookie Inspector&apos;s results.
+                </Text>
+              }
+            />
+            <ListItem
+              label={
+                <Text display="block" textWrap="pretty">
                   Password Analyzer: entropy and findings are a local estimate against a small offline common-password list. It does not query Have I Been Pwned or any breach corpus, and a high score is not a guarantee.
                 </Text>
               }

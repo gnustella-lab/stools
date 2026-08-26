@@ -38,6 +38,8 @@ quiet.
 | **Email Privacy Inspector** | Parse raw email source for 1×1 tracking pixels, Reply-To mismatches, bulk-mail flags and link trackers |
 | **Tracker Inspector** | Enumerate tracking pixels, third-party scripts, hidden iframes and `utm_*`/`fbclid` links in pasted HTML |
 | **HAR Sanitizer** | Redact cookies, Authorization headers, query tokens, JWTs, PEM keys and IPs from HAR or JSON captures |
+| **Cookie Inspector** | Review Cookie / Set-Cookie flags, domain scope, lifetime and tracking-like names without ever rendering cookie values |
+| **Privacy Header Inspector** | Audit pasted HTTP response headers for referrer leakage, Permissions-Policy, CSP, caching, CORS and server disclosure |
 | **Paste Vault** | Seal a note with AES-256-GCM + PBKDF2 and share it as a URL fragment that never reaches a server |
 
 ### Encoding
@@ -115,6 +117,7 @@ node --experimental-strip-types scripts/test-homograph.ts         # mixed-script
 node --experimental-strip-types scripts/test-harSanitize.ts       # HAR Authorization / token / IP redaction
 node --experimental-strip-types scripts/test-passwordStrength.ts  # common vs long-random scoring
 node --experimental-strip-types scripts/test-geoanonymize.ts      # GPX rounding and timestamp strip
+node --experimental-strip-types scripts/test-httpPrivacy.ts       # cookie and HTTP privacy-header checks
 ```
 
 ## Deployment

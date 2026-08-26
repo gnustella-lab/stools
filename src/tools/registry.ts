@@ -28,6 +28,8 @@ import {
   GlobeAltIcon,
   DocumentMinusIcon,
   MapPinIcon,
+  ShieldCheckIcon,
+  DocumentCheckIcon,
 } from '@heroicons/react/24/outline';
 import type {ToolDef, ToolCategory} from './types';
 
@@ -336,6 +338,28 @@ export const TOOLS: ToolDef[] = [
     icon: DocumentMinusIcon,
     keywords: ['har', 'sanitize', 'redact', 'cookie', 'authorization', 'devtools', 'capture', 'privacy'],
     component: lazy(() => import('./HarSanitizer')),
+  },
+  {
+    id: 'cookie-inspector',
+    name: 'Cookie Inspector',
+    tagline: 'Audit cookie flags without exposing their values',
+    description:
+      'Inspect Cookie and Set-Cookie headers for tracking-like names, Secure, HttpOnly, SameSite, domain scope and long retention. Values are never rendered in the results and nothing leaves this tab.',
+    category: 'Security',
+    icon: ShieldCheckIcon,
+    keywords: ['cookie', 'set-cookie', 'samesite', 'httponly', 'secure', 'tracking', 'privacy', 'header'],
+    component: lazy(() => import('./CookieInspector')),
+  },
+  {
+    id: 'privacy-header-inspector',
+    name: 'Privacy Header Inspector',
+    tagline: 'Review privacy-related HTTP response headers',
+    description:
+      'Analyze pasted HTTP response headers for referrer leakage, Permissions-Policy, CSP, caching, CORS and server disclosure. The review is local and does not contact the URL.',
+    category: 'Security',
+    icon: DocumentCheckIcon,
+    keywords: ['http', 'header', 'csp', 'cors', 'referrer-policy', 'permissions-policy', 'cache-control', 'privacy'],
+    component: lazy(() => import('./PrivacyHeaderInspector')),
   },
   {
     id: 'paste-vault',
