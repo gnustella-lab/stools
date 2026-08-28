@@ -1,7 +1,7 @@
 import type {ComponentType, LazyExoticComponent} from 'react';
 import type {SVGProps} from 'react';
 
-export type ToolCategory = 'Security' | 'Encoding' | 'Data' | 'Media' | 'Text';
+export type ToolCategory = 'Security' | 'Encoding' | 'Data' | 'Media' | 'Text' | 'Design';
 
 export type HeroIcon = ComponentType<SVGProps<SVGSVGElement>>;
 

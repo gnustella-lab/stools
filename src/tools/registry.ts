@@ -39,6 +39,8 @@ import {
   HashtagIcon,
   DocumentDuplicateIcon,
   CubeIcon,
+  PaintBrushIcon,
+  EyeDropperIcon,
 } from '@heroicons/react/24/outline';
 import type {ToolDef, ToolCategory} from './types';
 
@@ -48,6 +50,7 @@ export const CATEGORY_ORDER: ToolCategory[] = [
   'Data',
   'Media',
   'Text',
+  'Design',
 ];
 
 export const TOOLS: ToolDef[] = [
@@ -611,6 +614,94 @@ export const TOOLS: ToolDef[] = [
     icon: LanguageIcon,
     keywords: ['encoding', 'html', 'url', 'base64', 'unicode', 'quoted-printable', 'privacy'],
     component: lazy(() => import('./TextEncodingLab')),
+  },
+  {
+    id: 'palette-extractor',
+    name: 'Palette Extractor',
+    tagline: 'Extract dominant colors from any image',
+    description:
+      'Sample pixels via Canvas and cluster with k-means to reveal 6 dominant colors. Exports HEX, CSS vars, and Tailwind config — all offline, no upload.',
+    category: 'Design',
+    icon: SwatchIcon,
+    keywords: ['palette', 'color', 'dominant', 'k-means', 'image', 'theme', 'offline'],
+    component: lazy(() => import('./PaletteExtractor')),
+  },
+  {
+    id: 'gradient-studio',
+    name: 'Gradient Studio',
+    tagline: 'Build CSS gradients live',
+    description:
+      'Craft linear, radial, and conic gradients with live preview and copy-ready CSS. All computed locally with Canvas preview.',
+    category: 'Design',
+    icon: PaintBrushIcon,
+    keywords: ['gradient', 'css', 'linear', 'radial', 'conic', 'background', 'design'],
+    component: lazy(() => import('./GradientStudio')),
+  },
+  {
+    id: 'contrast-checker',
+    name: 'Contrast Checker',
+    tagline: 'WCAG ratio with daltonism simulation',
+    description:
+      'Check WCAG AA/AAA contrast with luminance math and preview protanopia, deuteranopia, and tritanopia simulations. Local only, no audit service.',
+    category: 'Design',
+    icon: EyeDropperIcon,
+    keywords: ['contrast', 'wcag', 'a11y', 'accessibility', 'daltonism', 'color', 'ratio'],
+    component: lazy(() => import('./ContrastChecker')),
+  },
+  {
+    id: 'type-scale-studio',
+    name: 'Type Scale Studio',
+    tagline: 'Modular scale with fluid clamp()',
+    description:
+      'Generate a modular type scale and fluid clamp() values for responsive typography. Copy CSS vars and preview sizes — offline.',
+    category: 'Design',
+    icon: DocumentTextIcon,
+    keywords: ['typography', 'scale', 'clamp', 'fluid', 'css', 'font', 'modular'],
+    component: lazy(() => import('./TypeScaleStudio')),
+  },
+  {
+    id: 'shadow-radius-studio',
+    name: 'Shadow & Radius Studio',
+    tagline: 'Box-shadow and radius playground',
+    description:
+      'Tweak x, y, blur, spread, and radius with live card preview. Copy box-shadow and border-radius CSS — all local.',
+    category: 'Design',
+    icon: CubeIcon,
+    keywords: ['shadow', 'radius', 'css', 'box-shadow', 'border', 'design', 'card'],
+    component: lazy(() => import('./ShadowRadiusStudio')),
+  },
+  {
+    id: 'grid-builder',
+    name: 'Grid Builder',
+    tagline: 'Visual CSS Grid builder',
+    description:
+      'Configure columns, rows, and gaps visually and copy grid-template CSS with HTML. Preview updates live — no layout cloud.',
+    category: 'Design',
+    icon: Squares2X2Icon,
+    keywords: ['grid', 'css', 'layout', 'template', 'gap', 'design', 'responsive'],
+    component: lazy(() => import('./GridBuilder')),
+  },
+  {
+    id: 'favicon-studio',
+    name: 'Favicon Studio',
+    tagline: 'Generate favicons/OG from logo',
+    description:
+      'Re-encode a logo via Canvas to 16/32/48/180/192/512 PNGs and pack a multi-size favicon.ico. No image leaves this tab.',
+    category: 'Design',
+    icon: PhotoIcon,
+    keywords: ['favicon', 'ico', 'png', 'icon', 'og', 'pwa', 'logo'],
+    component: lazy(() => import('./FaviconStudio')),
+  },
+  {
+    id: 'svg-optimizer',
+    name: 'SVG Optimizer',
+    tagline: 'Optimize SVG without cloud',
+    description:
+      'Strip comments and metadata, round coordinates, and remove editor cruft from SVG locally. Reports saved bytes — no SVGO cloud.',
+    category: 'Design',
+    icon: WrenchScrewdriverIcon,
+    keywords: ['svg', 'optimize', 'minify', 'svgo', 'vector', 'clean', 'offline'],
+    component: lazy(() => import('./SvgOptimizer')),
   },
 ];
 
