@@ -13,17 +13,17 @@ export default function GraphqlFormatter(){
   const err=useMemo(()=> validateGraphql(input),[input]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Formate e valide queries GraphQL localmente — queries revelam schema interno, mantenha-as offline.</Text>
+      <Text type="supporting" display="block">Format and validate GraphQL queries locally — queries reveal internal schema, keep them offline.</Text>
       <TextArea label="GraphQL Query / Mutation" placeholder="query { user { id name } }" value={input} onChange={setInput} rows={8} hasSpellCheck={false} status={err && input.trim()?{type:'error', message:err}:undefined} />
       <HStack gap={2}><CopyButton value={formatted.output} /></HStack>
       {formatted.output && (
         <VStack gap={2}>
-          <Text weight="semibold" display="block">Formatado</Text>
+          <Text weight="semibold" display="block">Formatted</Text>
           <CodeBlock code={formatted.output} language="graphql" width="100%" maxHeight={380} hasLineNumbers hasCopyButton={false}/>
           {formatted.error && <Text type="supporting" display="block">{formatted.error}</Text>}
         </VStack>
       )}
-      <Banner status="info" title="Limite" description="Formatter heurístico indentando por {}()/[]. Balanceamento de chaves é validado; syntax completa exigiria parser graphql pesado." />
+      <Banner status="info" title="Limit" description="Heuristic formatter indenting by {}()/[]. Brace balance is validated; full syntax would require a heavy graphql parser." />
     </VStack>
   );
 }

@@ -25,54 +25,54 @@ export function compareSemver(a:SemVer,b:SemVer): number {
 
 export function diffSemver(a:string,b:string): string {
   const pa=parseSemver(a); const pb=parseSemver(b);
-  if(!pa||!pb) return 'Uma das versões é inválida (esperado x.y.z)';
+  if(!pa||!pb) return 'One of the versions is invalid (expected x.y.z)';
   if(pa.major!==pb.major) return 'major — breaking change';
   if(pa.minor!==pb.minor) return 'minor — feature';
   if(pa.patch!==pb.patch) return 'patch — fix';
   if(pa.prerelease!==pb.prerelease) return 'prerelease diff';
-  return 'iguais';
+  return 'equal';
 }
 
 export function satisfiesRange(version:string, range:string): {satisfies:boolean, reason:string} {
   const ver=parseSemver(version);
-  if(!ver) return {satisfies:false, reason:'versão inválida'};
+  if(!ver) return {satisfies:false, reason:'invalid version'};
   range=range.trim();
-  if(range==='*'||range==='x') return {satisfies:true, reason:'* aceita qualquer'};
-  // handle ^, ~, >= etc simples
+  if(range==='*'||range==='x') return {satisfies:true, reason:'* matches any'};
+  // handle ^, ~, >= etc simple
   if(range.startsWith('^')){
     const base=parseSemver(range.slice(1));
-    if(!base) return {satisfies:false, reason:'range inválido'};
-    if(ver.major!==base.major) return {satisfies:false, reason:`major deve ser ${base.major}`};
-    return {satisfies: compareSemver(ver, base)>=0, reason: `^${base.raw} compatível se >=${base.raw} e <${base.major+1}.0.0`};
+    if(!base) return {satisfies:false, reason:'invalid range'};
+    if(ver.major!==base.major) return {satisfies:false, reason:`major must be ${base.major}`};
+    return {satisfies: compareSemver(ver, base)>=0, reason: `^${base.raw} compatible if >=${base.raw} and <${base.major+1}.0.0`};
   }
   if(range.startsWith('~')){
     const base=parseSemver(range.slice(1));
-    if(!base) return {satisfies:false, reason:'range inválido'};
-    if(ver.major!==base.major||ver.minor!==base.minor) return {satisfies:false, reason:`deve manter ${base.major}.${base.minor}.x`};
+    if(!base) return {satisfies:false, reason:'invalid range'};
+    if(ver.major!==base.major||ver.minor!==base.minor) return {satisfies:false, reason:`must keep ${base.major}.${base.minor}.x`};
     return {satisfies: compareSemver(ver, base)>=0, reason:`~ ${base.raw}`};
   }
   if(range.startsWith('>=')){
     const base=parseSemver(range.slice(2));
-    if(!base) return {satisfies:false, reason:'range inválido'};
+    if(!base) return {satisfies:false, reason:'invalid range'};
     return {satisfies: compareSemver(ver, base)>=0, reason:`>=${base.raw}`};
   }
   if(range.startsWith('>')){
     const base=parseSemver(range.slice(1));
-    if(!base) return {satisfies:false, reason:'range inválido'};
+    if(!base) return {satisfies:false, reason:'invalid range'};
     return {satisfies: compareSemver(ver, base)>0, reason:`>${base.raw}`};
   }
   if(range.startsWith('<=')){
     const base=parseSemver(range.slice(2));
-    if(!base) return {satisfies:false, reason:'range inválido'};
+    if(!base) return {satisfies:false, reason:'invalid range'};
     return {satisfies: compareSemver(ver, base)<=0, reason:`<=${base.raw}`};
   }
   if(range.startsWith('<')){
     const base=parseSemver(range.slice(1));
-    if(!base) return {satisfies:false, reason:'range inválido'};
+    if(!base) return {satisfies:false, reason:'invalid range'};
     return {satisfies: compareSemver(ver, base)<0, reason:`<${base.raw}`};
   }
   // exact
   const base=parseSemver(range);
-  if(base) return {satisfies: compareSemver(ver, base)===0, reason:'igualdade exata'};
-  return {satisfies:false, reason:'range não suportado (suporta ^ ~ >= > <= < e exata)'};
+  if(base) return {satisfies: compareSemver(ver, base)===0, reason:'exact match'};
+  return {satisfies:false, reason:'unsupported range (supports ^ ~ >= > <= < and exact)'};
 }

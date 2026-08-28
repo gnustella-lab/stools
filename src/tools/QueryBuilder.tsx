@@ -25,7 +25,7 @@ export default function QueryBuilder(){
 
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Monte e parseie query strings localmente — URLs com tokens não precisam ir para urldecoder.org.</Text>
+      <Text type="supporting" display="block">Build and parse query strings locally — URLs with tokens do not need to go to urldecoder.org.</Text>
       <VStack gap={2}>
         <Text weight="semibold" display="block">Builder</Text>
         <TextInput label="Base URL" value={base} onChange={setBase} placeholder="https://api.example.com/search" />
@@ -36,12 +36,12 @@ export default function QueryBuilder(){
             <button onClick={()=>delRow(i)} style={{padding:'6px 10px', borderRadius:6, border:'1px solid #ccc', background:'#fff'}}>✕</button>
           </HStack>
         ))}
-        <HStack gap={2}><button onClick={addRow} style={{padding:'6px 12px', borderRadius:6, border:'1px solid #111', background:'#fff'}}> + Add param</button><CopyButton value={built} label="Copiar URL" /></HStack>
+        <HStack gap={2}><button onClick={addRow} style={{padding:'6px 12px', borderRadius:6, border:'1px solid #111', background:'#fff'}}> + Add param</button><CopyButton value={built} label="Copy URL" /></HStack>
         <CodeBlock code={built} language="plaintext" width="100%" isWrapped hasCopyButton={false} />
-        <CodeBlock code={queryOnly || '(vazio)'} language="plaintext" width="100%" isWrapped hasCopyButton={false} />
+        <CodeBlock code={queryOnly || '(empty)'} language="plaintext" width="100%" isWrapped hasCopyButton={false} />
       </VStack>
       <VStack gap={2}>
-        <Text weight="semibold" display="block">Parser (cole URL ou ?q=...)</Text>
+        <Text weight="semibold" display="block">Parser (paste URL or ?q=...)</Text>
         <TextArea label="URL / Query raw" value={raw} onChange={setRaw} rows={3} hasSpellCheck={false} status={parsed.error?{type:'error', message:parsed.error}:undefined} />
         {parsed.entries.length>0 && (
           <VStack gap={1}>
@@ -51,7 +51,7 @@ export default function QueryBuilder(){
           </VStack>
         )}
       </VStack>
-      <Banner status="info" title="Encoding" description="Usa URLSearchParams nativo — encodeURIComponent correto, sem surpresas." />
+      <Banner status="info" title="Encoding" description="Uses native URLSearchParams — correct encodeURIComponent, no surprises." />
     </VStack>
   );
 }

@@ -1,22 +1,22 @@
 // Header builder & status atlas
 
 export const STATUS_CODES: Record<number,{phrase:string, description:string}> = {
-  200:{phrase:'OK', description:'Requisição bem-sucedida'},
-  201:{phrase:'Created', description:'Recurso criado'},
-  204:{phrase:'No Content', description:'Sem conteúdo'},
-  301:{phrase:'Moved Permanently', description:'Redirecionamento permanente'},
-  302:{phrase:'Found', description:'Redirecionamento temporário'},
-  304:{phrase:'Not Modified', description:'Cache válido'},
-  400:{phrase:'Bad Request', description:'Requisição malformada'},
-  401:{phrase:'Unauthorized', description:'Autenticação requerida'},
-  403:{phrase:'Forbidden', description:'Proibido'},
-  404:{phrase:'Not Found', description:'Não encontrado'},
-  409:{phrase:'Conflict', description:'Conflito'},
-  422:{phrase:'Unprocessable Entity', description:'Entidade não processável'},
+  200:{phrase:'OK', description:'Successful request'},
+  201:{phrase:'Created', description:'Resource created'},
+  204:{phrase:'No Content', description:'No content'},
+  301:{phrase:'Moved Permanently', description:'Permanent redirect'},
+  302:{phrase:'Found', description:'Temporary redirect'},
+  304:{phrase:'Not Modified', description:'Cache still valid'},
+  400:{phrase:'Bad Request', description:'Malformed request'},
+  401:{phrase:'Unauthorized', description:'Authentication required'},
+  403:{phrase:'Forbidden', description:'Forbidden'},
+  404:{phrase:'Not Found', description:'Not found'},
+  409:{phrase:'Conflict', description:'Conflict'},
+  422:{phrase:'Unprocessable Entity', description:'Unprocessable entity'},
   429:{phrase:'Too Many Requests', description:'Rate limit'},
-  500:{phrase:'Internal Server Error', description:'Erro interno'},
-  502:{phrase:'Bad Gateway', description:'Gateway inválido'},
-  503:{phrase:'Service Unavailable', description:'Serviço indisponível'},
+  500:{phrase:'Internal Server Error', description:'Internal error'},
+  502:{phrase:'Bad Gateway', description:'Invalid gateway'},
+  503:{phrase:'Service Unavailable', description:'Service unavailable'},
 };
 
 export function buildHeaders(entries:Array<{name:string,value:string}>): string {

@@ -17,24 +17,24 @@ export default function SemverChecker(){
   const sat=useMemo(()=> satisfiesRange(a, range),[a,range]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Compare versões SemVer e teste ranges (^, ~, &gt;=) localmente — útil para checar package.json sem consultar serviço externo.</Text>
+      <Text type="supporting" display="block">Compare SemVer versions and test ranges (^, ~, &gt;=) locally — useful for checking package.json without querying an external service.</Text>
       <HStack gap={3} wrap="wrap" vAlign="end">
-        <TextInput label="Versão A" value={a} onChange={setA} width="160px" status={pa?undefined:{type:'error', message:'x.y.z'}} />
-        <TextInput label="Versão B" value={b} onChange={setB} width="160px" status={pb?undefined:{type:'error', message:'x.y.z'}} />
+        <TextInput label="Version A" value={a} onChange={setA} width="160px" status={pa?undefined:{type:'error', message:'x.y.z'}} />
+        <TextInput label="Version B" value={b} onChange={setB} width="160px" status={pb?undefined:{type:'error', message:'x.y.z'}} />
         <TextInput label="Range" value={range} onChange={setRange} placeholder="^1.4.0" width="160px" />
       </HStack>
       <VStack gap={2}>
         <HStack gap={2} vAlign="center">
-          <Token label={cmp===null? 'inválido': cmp===0?'A == B': cmp>0?'A > B':'A < B'} size="sm" color={cmp===0?'green': cmp===null?'red':'blue'} />
+          <Token label={cmp===null? 'invalid': cmp===0?'A == B': cmp>0?'A > B':'A < B'} size="sm" color={cmp===0?'green': cmp===null?'red':'blue'} />
           <Text type="supporting" display="block">{diff}</Text>
         </HStack>
         {pa && <Text type="code" display="block">{pa.raw} → major {pa.major} minor {pa.minor} patch {pa.patch}{pa.prerelease?` prerelease ${pa.prerelease}`:''}</Text>}
         <HStack gap={2} vAlign="center">
-          <Token label={sat.satisfies? 'satisfaz ✓':'não satisfaz'} size="sm" color={sat.satisfies?'green':'red'} />
+          <Token label={sat.satisfies? 'satisfies ✓':'does not satisfy'} size="sm" color={sat.satisfies?'green':'red'} />
           <Text type="supporting" display="block">{a} {sat.satisfies?'∈':'∉'} {range} — {sat.reason}</Text>
         </HStack>
       </VStack>
-      <Banner status="info" title="Ranges suportados" description="*, ^, ~, >=, >, <=, < e igualdade exata. Sem OR (||) ou hyphen ranges complexos." />
+      <Banner status="info" title="Supported ranges" description="*, ^, ~, >=, >, <=, < and exact equality. No OR (||) or complex hyphen ranges." />
     </VStack>
   );
 }

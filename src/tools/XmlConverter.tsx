@@ -18,22 +18,22 @@ export default function XmlConverter(){
   },[input,mode]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Converta XML ↔ JSON offline — envelopes SOAP com CPF/CNPJ não saem do browser. Usa DOMParser nativo.</Text>
+      <Text type="supporting" display="block">Convert XML ↔ JSON offline — SOAP envelopes with PII stay in the browser. Uses native DOMParser.</Text>
       <HStack gap={4} wrap="wrap" vAlign="end">
-        <SegmentedControl label="Direção" value={mode} onChange={v=>setMode(v as Mode)}>
+        <SegmentedControl label="Direction" value={mode} onChange={v=>setMode(v as Mode)}>
           <SegmentedControlItem value="xml2json" label="XML → JSON" />
           <SegmentedControlItem value="json2xml" label="JSON → XML" />
         </SegmentedControl>
         <CopyButton value={result.output} />
       </HStack>
-      <TextArea label={mode==='xml2json'?'XML input':'JSON input (root único)'} placeholder={mode==='xml2json'?'<root/>':'{"root":{"user":"..."}}'} value={input} onChange={setInput} rows={10} hasSpellCheck={false} status={result.error?{type:'error', message:result.error}:undefined} />
+      <TextArea label={mode==='xml2json'?'XML input':'JSON input (single root)'} placeholder={mode==='xml2json'?'<root/>':'{"root":{"user":"..."}}'} value={input} onChange={setInput} rows={10} hasSpellCheck={false} status={result.error?{type:'error', message:result.error}:undefined} />
       {result.output && (
         <VStack gap={2}>
           <Text weight="semibold" display="block">Output</Text>
           <CodeBlock code={result.output} language={mode==='xml2json'?'json':'xml'} width="100%" maxHeight={420} hasLineNumbers hasCopyButton={false} />
         </VStack>
       )}
-      <Banner status="info" title="Notas" description="Atributos viram @attr, texto em #text. JSON→XML requer objeto raiz único. Tudo em memória." />
+      <Banner status="info" title="Notes" description="Attributes become @attr, text goes into #text. JSON→XML requires a single root object. All in memory." />
     </VStack>
   );
 }

@@ -16,22 +16,22 @@ function expandField(raw:string, min:number, max:number): {valid:boolean, error?
     if(seg.includes('/')){
       const [base, s]=seg.split('/');
       seg=base; step=s;
-      if(!/^\d+$/.test(step)) return {valid:false, error:`step '${step}' inválido`};
+      if(!/^\d+$/.test(step)) return {valid:false, error:`step '${step}' invalid`};
     }
     if(seg==='*') continue;
     // range
     if(seg.includes('-')){
       const [a,b]=seg.split('-').map(s=>s.trim());
       const ai=parseInt(a,10), bi=parseInt(b,10);
-      if(isNaN(ai)||isNaN(bi)||ai<min||bi>max||ai>bi) return {valid:false, error:`range ${seg} fora de [${min}-${max}]`};
+      if(isNaN(ai)||isNaN(bi)||ai<min||bi>max||ai>bi) return {valid:false, error:`range ${seg} out of [${min}-${max}]`};
       // also allow month/DOW names
       continue;
     }
     // allow names for month/dow
     if (/^[A-Z]{3}$/i.test(seg)) continue;
-    if (!/^\d+$/.test(seg)) return {valid:false, error:`valor '${seg}' inválido`};
+    if (!/^\d+$/.test(seg)) return {valid:false, error:`value '${seg}' invalid`};
     const v=parseInt(seg,10);
-    if(v<min||v>max) return {valid:false, error:`${v} fora de [${min}-${max}]`};
+    if(v<min||v>max) return {valid:false, error:`${v} out of [${min}-${max}]`};
   }
   return {valid:true};
 }
@@ -39,7 +39,7 @@ function expandField(raw:string, min:number, max:number): {valid:boolean, error?
 export function parseCron(expr:string): CronExplain {
   const raw = expr.trim().replace(/\s+/g,' ');
   const fields = raw.split(' ');
-  if (fields.length!==5 && fields.length!==6) return {valid:false, description:'', error:`Cron deve ter 5 campos (min hour dom month dow) — recebeu ${fields.length}`, fields:{}};
+  if (fields.length!==5 && fields.length!==6) return {valid:false, description:'', error:`Cron must have 5 fields (min hour dom month dow) — got ${fields.length}`, fields:{}};
   // support 6 fields (sec) by dropping first if 6?
   const is6 = fields.length===6;
   const parts = is6 ? fields.slice(1) : fields;
@@ -66,16 +66,16 @@ export function parseCron(expr:string): CronExplain {
 
 function describe(min:string,hour:string,dom:string,mon:string,dow:string): string {
   const parts:string[]=[];
-  if(min==='*'&&hour==='*') parts.push('a cada minuto');
-  else if(min==='*' ) parts.push(`a cada minuto na hora ${hour}`);
-  else if(hour==='*' ) parts.push(`no minuto ${min} de cada hora`);
-  else parts.push(`às ${hour.padStart(2,'0')}:${min.padStart(2,'0')}`);
+  if(min==='*'&&hour==='*') parts.push('every minute');
+  else if(min==='*' ) parts.push(`every minute at hour ${hour}`);
+  else if(hour==='*' ) parts.push(`at minute ${min} of every hour`);
+  else parts.push(`at ${hour.padStart(2,'0')}:${min.padStart(2,'0')}`);
 
-  if(dom!=='*' && mon!=='*') parts.push(`no dia ${dom} de ${mon}`);
-  else if(dom!=='*') parts.push(`no dia ${dom} de cada mês`);
+  if(dom!=='*' && mon!=='*') parts.push(`on day ${dom} of ${mon}`);
+  else if(dom!=='*') parts.push(`on day ${dom} of every month`);
   else if(mon!=='*') {
     const mNames = mon.split(',').map(v=> MONTHS[parseInt(v,10)]||v).join(',');
-    parts.push(`em ${mNames}`);
+    parts.push(`in ${mNames}`);
   }
   if(dow!=='*') {
     const dNames = dow.split(',').map(v=>{
@@ -83,11 +83,11 @@ function describe(min:string,hour:string,dom:string,mon:string,dow:string): stri
       if(!isNaN(n)) return DOWS[n%7]??String(n);
       return v;
     }).join(',');
-    parts.push(`em ${dNames}`);
+    parts.push(`on ${dNames}`);
   }
   // specials
   if(min.includes('/') ) parts.push(`(step ${min})`);
-  if(hour.includes('/') ) parts.push(`(a cada ${hour.split('/')[1]}h)`);
+  if(hour.includes('/') ) parts.push(`(every ${hour.split('/')[1]}h)`);
   return parts.join(' ').replace(/\s+/g,' ').trim();
 }
 
@@ -112,7 +112,7 @@ export function nextRuns(expr: string, count=3): string[] {
     cur = new Date(cur.getTime() + 60_000);
     attempts++;
   }
-  if(res.length===0) return [`(sem ocorrência nos próximos 7 dias — expr: ${expr})`];
+  if(res.length===0) return [`(no occurrences in next 7 days — expr: ${expr})`];
   return res;
 }
 

@@ -38,22 +38,22 @@ components:
   const parsed=useMemo(()=> parseOpenApi(input),[input]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Pré-visualize OpenAPI/Swagger (JSON ou YAML) sem fazer upload da spec confidencial para editores online. Lista paths e schemas localmente.</Text>
-      <TextArea label="OpenAPI (YAML ou JSON)" placeholder="openapi: 3.0.0 ..." value={input} onChange={setInput} rows={12} hasSpellCheck={false} />
+      <Text type="supporting" display="block">Preview OpenAPI/Swagger (JSON or YAML) without uploading the confidential spec to online editors. Lists paths and schemas locally.</Text>
+      <TextArea label="OpenAPI (YAML or JSON)" placeholder="openapi: 3.0.0 ..." value={input} onChange={setInput} rows={12} hasSpellCheck={false} />
       {parsed.error ? (
-        <Text color="accent" display="block">Erro: {parsed.error}</Text>
+        <Text color="accent" display="block">Error: {parsed.error}</Text>
       ) : (
         <VStack gap={3}>
           <HStack gap={2} wrap="wrap" vAlign="center">
-            <Token label={`${parsed.openapi || 'sem versão'}`} size="sm" />
-            <Token label={parsed.title || 'sem título'} size="sm" color="green" />
+            <Token label={`${parsed.openapi || 'no version'}`} size="sm" />
+            <Token label={parsed.title || 'no title'} size="sm" color="green" />
             <Token label={`v${parsed.version || '?'}`} size="sm" />
             <Token label={`${parsed.paths.length} paths`} size="sm" color="blue" />
             <Token label={`${parsed.schemas.length} schemas`} size="sm" />
           </HStack>
           <VStack gap={2}>
             <Text weight="semibold" display="block">Paths</Text>
-            {parsed.paths.length===0? <Text type="supporting" display="block">Nenhum path detectado</Text> :
+            {parsed.paths.length===0? <Text type="supporting" display="block">No paths detected</Text> :
               parsed.paths.map(p=>(
                 <HStack key={p.path} gap={2} wrap="wrap" vAlign="center">
                   <Text type="code" display="block">{p.path}</Text>
@@ -69,7 +69,7 @@ components:
           <CodeBlock code={JSON.stringify({title:parsed.title, version:parsed.version, openapi:parsed.openapi, paths:parsed.paths},null,2)} language="json" width="100%" maxHeight={260} hasLineNumbers hasCopyButton={false}/>
         </VStack>
       )}
-      <Banner status="info" title="Leve" description="Preview lista paths/methods/schemas. Render completo Swagger UI não incluído para manter bundle leve — tudo via DOMParser/js-yaml interno." />
+      <Banner status="info" title="Lightweight" description="Preview lists paths/methods/schemas. Full Swagger UI rendering is not included to keep the bundle light — all via internal DOMParser/js-yaml." />
     </VStack>
   );
 }

@@ -22,15 +22,15 @@ export default function CurlCodegen(){
 
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Converta cURL → fetch / Python requests / Go http sem mandar seu <code>Authorization</code> para curlconverter.com.</Text>
-      <TextArea label="cURL" placeholder='curl -H "Authorization: Bearer ..." https://...' value={input} onChange={setInput} rows={6} hasSpellCheck={false} status={!parsed && input.trim()?{type:'error', message:'Não foi possível extrair URL — verifique o comando'}:undefined} />
+      <Text type="supporting" display="block">Convert cURL → fetch / Python requests / Go http without sending your <code>Authorization</code> to curlconverter.com.</Text>
+      <TextArea label="cURL" placeholder='curl -H "Authorization: Bearer ..." https://...' value={input} onChange={setInput} rows={6} hasSpellCheck={false} status={!parsed && input.trim()?{type:'error', message:'Could not extract URL — check the command'}:undefined} />
       {parsed && (
         <VStack gap={1}>
-          <Text type="supporting" display="block">Detectado: <b>{parsed.method}</b> {parsed.url} — {Object.keys(parsed.headers).length} header(s){parsed.data? ` — body ${parsed.data.slice(0,40)}`:''}</Text>
+          <Text type="supporting" display="block">Detected: <b>{parsed.method}</b> {parsed.url} — {Object.keys(parsed.headers).length} header(s){parsed.data? ` — body ${parsed.data.slice(0,40)}`:''}</Text>
         </VStack>
       )}
       <HStack gap={3} wrap="wrap" vAlign="end">
-        <SegmentedControl label="Alvo" value={target} onChange={v=>setTarget(v as Target)}>
+        <SegmentedControl label="Target" value={target} onChange={v=>setTarget(v as Target)}>
           <SegmentedControlItem value="fetch" label="JS fetch" />
           <SegmentedControlItem value="python" label="Python" />
           <SegmentedControlItem value="go" label="Go" />
@@ -38,7 +38,7 @@ export default function CurlCodegen(){
         <CopyButton value={output} />
       </HStack>
       {output && <CodeBlock code={output} language={target==='python'?'python': target==='go'?'go':'javascript'} width="100%" maxHeight={380} hasLineNumbers hasCopyButton={false} />}
-      <Banner status="info" title="Privado" description="Parsing via regex neste tab. Combine com cURL Scrubber para redigir secrets antes de compartilhar." />
+      <Banner status="info" title="Private" description="Parsing via regex in this tab. Combine with cURL Scrubber to redact secrets before sharing." />
     </VStack>
   );
 }

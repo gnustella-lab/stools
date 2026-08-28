@@ -20,9 +20,9 @@ export default function YamlConverter(){
 
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Converta YAML ↔ JSON sem enviar configs para yamltojson.com. Segredos em <code>application.yaml</code> ficam neste tab.</Text>
+      <Text type="supporting" display="block">Convert YAML ↔ JSON without sending configs to yamltojson.com. Secrets in <code>application.yaml</code> stay in this tab.</Text>
       <HStack gap={4} wrap="wrap" vAlign="end">
-        <SegmentedControl label="Direção" value={mode} onChange={v=>setMode(v as Mode)}>
+        <SegmentedControl label="Direction" value={mode} onChange={v=>setMode(v as Mode)}>
           <SegmentedControlItem value="yaml2json" label="YAML → JSON" />
           <SegmentedControlItem value="json2yaml" label="JSON → YAML" />
         </SegmentedControl>
@@ -35,7 +35,7 @@ export default function YamlConverter(){
           <CodeBlock code={result.output} language={mode==='yaml2json'?'json':'yaml'} width="100%" maxHeight={380} hasLineNumbers hasCopyButton={false} />
         </VStack>
       )}
-      <Banner status="info" title="Privado" description="Conversão pura em memória. Limite honesto: parser cobre mappings, sequências e escalares comuns — YAML complexo (anchors/merge) pode exigir revisão." />
+      <Banner status="info" title="Private" description="Pure in-memory conversion. Honest limit: parser covers common mappings, sequences and scalars — complex YAML (anchors/merge) may need manual review." />
     </VStack>
   );
 }

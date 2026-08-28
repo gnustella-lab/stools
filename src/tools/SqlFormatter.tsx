@@ -17,9 +17,9 @@ export default function SqlFormatter(){
   },[input,mode]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Formate SQL localmente — dumps com PII não precisam ir para sqlformat.org. Keywords em maiúsculas, quebras por cláusula.</Text>
+      <Text type="supporting" display="block">Format SQL locally — dumps with PII do not need to go to sqlformat.org. Uppercased keywords, breaks per clause.</Text>
       <HStack gap={3} wrap="wrap" vAlign="end">
-        <SegmentedControl label="Modo" value={mode} onChange={v=>setMode(v as 'format'|'minify')}>
+        <SegmentedControl label="Mode" value={mode} onChange={v=>setMode(v as 'format'|'minify')}>
           <SegmentedControlItem value="format" label="Format" />
           <SegmentedControlItem value="minify" label="Minify" />
         </SegmentedControl>
@@ -32,7 +32,7 @@ export default function SqlFormatter(){
           <CodeBlock code={output} language="sql" width="100%" maxHeight={380} hasLineNumbers hasCopyButton={false} />
         </VStack>
       )}
-      <Banner status="info" title="Limite honesto" description="Formatação heurística — cobre SELECT/JOIN/WHERE/GROUP BY/ORDER BY/LIMIT. Subqueries complexas podem precisar revisão manual." />
+      <Banner status="info" title="Honest limit" description="Heuristic formatting — covers SELECT/JOIN/WHERE/GROUP BY/ORDER BY/LIMIT. Complex subqueries may need manual review." />
     </VStack>
   );
 }

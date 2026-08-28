@@ -20,7 +20,7 @@ export default function JsonDiff(){
   },[res.diffs]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Compare JSONs estruturalmente — ideal para diff de configs prod vs staging sem subir dados reais.</Text>
+      <Text type="supporting" display="block">Compare JSON structurally — ideal for diffing prod vs staging configs without uploading real data.</Text>
       <HStack gap={4} wrap="wrap">
         <VStack gap={2} style={{flex:1, minWidth:300}}><TextArea label="JSON A" value={a} onChange={setA} rows={10} hasSpellCheck={false} /></VStack>
         <VStack gap={2} style={{flex:1, minWidth:300}}><TextArea label="JSON B" value={b} onChange={setB} rows={10} hasSpellCheck={false} /></VStack>
@@ -34,7 +34,7 @@ export default function JsonDiff(){
             <Token label={`${summary.changed} changed`} size="sm" color="orange" />
             <CopyButton value={JSON.stringify(res.diffs,null,2)} />
           </HStack>
-          {res.diffs.length===0? <Text type="supporting" display="block">Sem diferenças estruturais.</Text> : (
+          {res.diffs.length===0? <Text type="supporting" display="block">No structural differences.</Text> : (
             <VStack gap={2}>
               {res.diffs.map((d,i)=>(
                 <HStack key={i} gap={2} wrap="wrap" vAlign="center">
@@ -50,7 +50,7 @@ export default function JsonDiff(){
           )}
         </>
       )}
-      <Banner status="info" title="Ordem indiferente" description="Objetos são comparados por chaves (sem ordem). Arrays por índice. Sem rede." />
+      <Banner status="info" title="Order-insensitive" description="Objects are compared by keys (order-insensitive). Arrays by index. No network." />
     </VStack>
   );
 }

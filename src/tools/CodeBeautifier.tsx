@@ -21,17 +21,17 @@ export default function CodeBeautifier(){
 
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Formate/beautify HTML, CSS, JS e JSON sem colar código proprietário em prettifier.cloud. Duas engines locais.</Text>
+      <Text type="supporting" display="block">Format/beautify HTML, CSS, JS and JSON without pasting proprietary code into prettifier.cloud. Two local engines.</Text>
       <HStack gap={3} wrap="wrap" vAlign="end">
-        <Selector label="Linguagem" value={lang} onChange={v=>setLang(v as BeautifyLang)} options={[{value:'js',label:'JS'},{value:'html',label:'HTML'},{value:'css',label:'CSS'},{value:'json',label:'JSON'}]} />
-        <SegmentedControl label="Modo" value={mode} onChange={v=>setMode(v as 'beautify'|'minify')}>
+        <Selector label="Language" value={lang} onChange={v=>setLang(v as BeautifyLang)} options={[{value:'js',label:'JS'},{value:'html',label:'HTML'},{value:'css',label:'CSS'},{value:'json',label:'JSON'}]} />
+        <SegmentedControl label="Mode" value={mode} onChange={v=>setMode(v as 'beautify'|'minify')}>
           <SegmentedControlItem value="beautify" label="Beautify" />
           <SegmentedControlItem value="minify" label="Minify" />
         </SegmentedControl>
         {mode==='beautify' && (
           <SegmentedControl label="Engine" value={engine} onChange={v=>setEngine(v as BeautifyEngine)}>
-            <SegmentedControlItem value="fast" label="Fast (leve)" />
-            <SegmentedControlItem value="pretty" label="Pretty (fiel)" />
+            <SegmentedControlItem value="fast" label="Fast (light)" />
+            <SegmentedControlItem value="pretty" label="Pretty (faithful)" />
           </SegmentedControl>
         )}
         <CopyButton value={output} />
@@ -41,10 +41,10 @@ export default function CodeBeautifier(){
         <VStack gap={2}>
           <Text weight="semibold" display="block">Output — {engine} / {lang} {mode}</Text>
           <CodeBlock code={output} language={lang==='js'?'javascript':lang} width="100%" maxHeight={380} hasLineNumbers hasCopyButton={false} />
-          <Text type="supporting" display="block">{input.length} → {output.length} chars ({output.length<input.length? 'economia '+ (input.length-output.length): 'expandido'})</Text>
+          <Text type="supporting" display="block">{input.length} → {output.length} chars ({output.length<input.length? 'saved '+ (input.length-output.length): 'expanded'})</Text>
         </VStack>
       )}
-      <Banner status="info" title="Engines" description="Fast: regex leve, instantâneo. Pretty: tenta preservar estrutura (ex.: JSON com JSON.stringify). Ambos offline, sem upload." />
+      <Banner status="info" title="Engines" description="Fast: light regex, instant. Pretty: tries to preserve structure (e.g. JSON via JSON.stringify). Both offline, no upload." />
     </VStack>
   );
 }

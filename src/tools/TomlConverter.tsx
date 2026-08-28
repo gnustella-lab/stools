@@ -19,9 +19,9 @@ export default function TomlConverter(){
   },[input,mode]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Converta TOML ↔ JSON localmente — Cargo.toml, pyproject.toml sem vazar estrutura interna.</Text>
+      <Text type="supporting" display="block">Convert TOML ↔ JSON locally — Cargo.toml, pyproject.toml without leaking internal structure.</Text>
       <HStack gap={4} wrap="wrap" vAlign="end">
-        <SegmentedControl label="Direção" value={mode} onChange={v=>setMode(v as Mode)}>
+        <SegmentedControl label="Direction" value={mode} onChange={v=>setMode(v as Mode)}>
           <SegmentedControlItem value="toml2json" label="TOML → JSON" />
           <SegmentedControlItem value="json2toml" label="JSON → TOML" />
         </SegmentedControl>
@@ -34,7 +34,7 @@ export default function TomlConverter(){
           <CodeBlock code={result.output} language={mode==='toml2json'?'json':'toml'} width="100%" maxHeight={380} hasLineNumbers hasCopyButton={false}/>
         </VStack>
       )}
-      <Banner status="info" title="Local only" description="Parser cobre strings, números, booleanos, arrays e tables. Inline tables e datas TOML avançadas mostram limite honesto." />
+      <Banner status="info" title="Local only" description="Parser covers strings, numbers, booleans, arrays and tables. Advanced inline tables and TOML dates show an honest limit." />
     </VStack>
   );
 }

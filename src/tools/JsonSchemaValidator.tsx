@@ -15,19 +15,19 @@ export default function JsonSchemaValidator(){
   const hasDataErr = 'dataError' in result && result.dataError;
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Valide payloads contra JSON Schema sem enviar schema proprietário ou dados de produção para validadores online.</Text>
+      <Text type="supporting" display="block">Validate payloads against a JSON Schema without sending proprietary schemas or production data to online validators.</Text>
       <HStack gap={4} wrap="wrap">
         <TextArea label="JSON Schema" placeholder='{"type":"object"}' value={schema} onChange={setSchema} rows={10} hasSpellCheck={false} status={hasSchemaErr?{type:'error', message: (result as {schemaError:string}).schemaError}:undefined} />
       </HStack>
       <TextArea label="JSON Data" placeholder='{"key":"value"}' value={data} onChange={setData} rows={8} hasSpellCheck={false} status={hasDataErr?{type:'error', message:(result as {dataError:string}).dataError}:undefined} />
       <HStack gap={2} vAlign="center">
-        <Token label={result.valid ? 'Válido ✓' : `Inválido — ${result.errors.length} erro(s)`} size="sm" color={result.valid?'green':'red'} />
-        <Text type="supporting" display="block">{result.valid?'Schema e dados compatíveis': result.errors[0] ?? ''}</Text>
+        <Token label={result.valid ? 'Valid ✓' : `Invalid — ${result.errors.length} error(s)`} size="sm" color={result.valid?'green':'red'} />
+        <Text type="supporting" display="block">{result.valid?'Schema and data are compatible': result.errors[0] ?? ''}</Text>
       </HStack>
       {!result.valid && result.errors.length>0 && (
         <CodeBlock code={result.errors.join('\n')} language="plaintext" width="100%" maxHeight={220} isWrapped hasCopyButton={false}/>
       )}
-      <Banner status="info" title="Limite honesto" description="Validador cobre type, required, properties, enum, minimum/maximum, minLength/maxLength, pattern, additionalProperties. $ref e allOf/anyOf avançados não suportados." />
+      <Banner status="info" title="Honest limit" description="Validator covers type, required, properties, enum, minimum/maximum, minLength/maxLength, pattern, additionalProperties. $ref and advanced allOf/anyOf are not supported." />
     </VStack>
   );
 }

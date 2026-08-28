@@ -708,9 +708,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'yaml-converter',
     name: 'YAML Converter',
-    tagline: 'YAML ↔ JSON sem vazar configs',
+    tagline: 'YAML ↔ JSON without leaking configs',
     description:
-      'Converta YAML para JSON e vice-versa localmente. Evita enviar application.yaml com secrets para conversores online. Parser cobre mappings e sequências comuns.',
+      'Convert YAML to JSON and back locally. Avoid sending application.yaml with secrets to online converters. Parser covers common mappings and sequences.',
     category: 'Dev',
     icon: CodeBracketIcon,
     keywords: ['yaml', 'json', 'convert', 'config', 'offline', 'privacy'],
@@ -721,7 +721,7 @@ export const TOOLS: ToolDef[] = [
     name: 'TOML Converter',
     tagline: 'TOML ↔ JSON offline',
     description:
-      'Transforme Cargo.toml, pyproject.toml e configs TOML em JSON localmente, sem expor estrutura interna.',
+      'Transform Cargo.toml, pyproject.toml and TOML configs into JSON locally without exposing internal structure.',
     category: 'Dev',
     icon: DocumentDuplicateIcon,
     keywords: ['toml', 'json', 'cargo', 'pyproject', 'convert', 'offline'],
@@ -732,7 +732,7 @@ export const TOOLS: ToolDef[] = [
     name: 'XML Converter',
     tagline: 'XML ↔ JSON via DOMParser',
     description:
-      'Converta SOAP/RSS e XML genérico para JSON usando DOMParser nativo. Nenhum envelope com PII sai do browser.',
+      'Convert SOAP/RSS and generic XML to JSON using the native DOMParser. No PII envelope leaves the browser.',
     category: 'Dev',
     icon: CodeBracketSquareIcon,
     keywords: ['xml', 'json', 'convert', 'soap', 'domparser', 'offline'],
@@ -741,9 +741,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'json-schema-validator',
     name: 'JSON Schema Validator',
-    tagline: 'Valide payloads contra schema',
+    tagline: 'Validate payloads against a schema',
     description:
-      'Valide JSON contra JSON Schema sem enviar schema proprietário. Cobre type, required, properties, enum e constraints comuns.',
+      'Validate JSON against a JSON Schema without sending proprietary schemas. Covers type, required, properties, enum and common constraints.',
     category: 'Dev',
     icon: DocumentCheckIcon,
     keywords: ['json', 'schema', 'validate', 'ajv', 'offline', 'privacy'],
@@ -752,9 +752,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'jsonpath-tester',
     name: 'JSONPath Tester',
-    tagline: 'Teste JSONPath offline',
+    tagline: 'Test JSONPath offline',
     description:
-      'Teste expressões JSONPath ($, ., [], [*]) contra seu JSON privado. Evita colar dados de clientes em testadores online.',
+      'Test JSONPath expressions ($, ., [], [*]) against your private JSON. Avoid pasting customer data into online testers.',
     category: 'Dev',
     icon: MagnifyingGlassIcon,
     keywords: ['jsonpath', 'jmespath', 'json', 'query', 'offline', 'privacy'],
@@ -763,9 +763,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'jwt-builder',
     name: 'JWT Builder & Signer',
-    tagline: 'Assine HS256/384/512 local',
+    tagline: 'Sign HS256/384/512 locally',
     description:
-      'Construa e assine JWTs com HMAC-SHA via Web Crypto. Segredo nunca sai do tab — alternativa privada ao jwt.io.',
+      'Build and sign JWTs with HMAC-SHA via Web Crypto. The secret never leaves the tab — a private alternative to jwt.io.',
     category: 'Dev',
     icon: TicketIcon,
     keywords: ['jwt', 'jws', 'hs256', 'sign', 'hmac', 'offline', 'privacy'],
@@ -774,9 +774,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'hex-inspector',
     name: 'Hex Inspector',
-    tagline: 'Hex ↔ Texto e hex dump',
+    tagline: 'Hex ↔ Text and hex dump',
     description:
-      'Converta texto para hex, hex para texto e gere hex dump estilo xxd. Arquivos lidos via FileReader, nunca enviados.',
+      'Convert text to hex, hex to text and generate xxd-style hex dumps. Files are read with FileReader and never uploaded.',
     category: 'Dev',
     icon: CommandLineIcon,
     keywords: ['hex', 'dump', 'xxd', 'binary', 'offline', 'privacy'],
@@ -787,7 +787,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Unicode Inspector',
     tagline: 'Codepoints, UTF-8, NFC/NFD',
     description:
-      'Inspecione codepoints, bytes UTF-8 e normalizações. Detecta mojibake. Tudo via TextEncoder local.',
+      'Inspect codepoints, UTF-8 bytes and normalizations. Detects mojibake. All via local TextEncoder.',
     category: 'Dev',
     icon: LanguageIcon,
     keywords: ['unicode', 'utf8', 'codepoint', 'nfc', 'nfd', 'offline'],
@@ -796,9 +796,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'code-beautifier',
     name: 'Code Beautifier',
-    tagline: 'HTML/CSS/JS/JSON com 2 engines',
+    tagline: 'HTML/CSS/JS/JSON with 2 engines',
     description:
-      'Formate e minifique HTML, CSS, JS e JSON offline. Engine Fast (regex leve) e Pretty (fiel), ambos sem upload.',
+      'Format and minify HTML, CSS, JS and JSON offline. Fast engine (light regex) and Pretty engine (faithful), both without upload.',
     category: 'Dev',
     icon: PaintBrushIcon,
     keywords: ['beautify', 'format', 'minify', 'prettier', 'html', 'css', 'js', 'offline'],
@@ -807,9 +807,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'sql-formatter',
     name: 'SQL Formatter',
-    tagline: 'Formate SQL offline',
+    tagline: 'Format SQL offline',
     description:
-      'Formate e minifique SQL com keywords em maiúsculas e quebras por cláusula. Evita enviar dumps com PII para formatadores online.',
+      'Format and minify SQL with uppercased keywords and clause breaks. Avoid sending PII dumps to online formatters.',
     category: 'Dev',
     icon: CubeIcon,
     keywords: ['sql', 'format', 'pretty', 'minify', 'offline', 'privacy'],
@@ -818,9 +818,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'cron-builder',
     name: 'Cron Builder',
-    tagline: 'Monte e explique crons',
+    tagline: 'Build and explain crons',
     description:
-      'Monte expressões cron 5 campos, valide e veja próximas execuções. Explicação humana PT-BR, tudo local.',
+      'Build 5-field cron expressions, validate and see next runs. Human readable explanation, all local.',
     category: 'Dev',
     icon: ClockIcon,
     keywords: ['cron', 'schedule', 'builder', 'explain', 'offline'],
@@ -831,7 +831,7 @@ export const TOOLS: ToolDef[] = [
     name: 'cURL to Code',
     tagline: 'cURL → fetch / Python / Go',
     description:
-      'Converta cURL para fetch, Python requests e Go http sem mandar Authorization para conversores online.',
+      'Convert cURL to fetch, Python requests and Go http without sending Authorization to online converters.',
     category: 'Dev',
     icon: CommandLineIcon,
     keywords: ['curl', 'fetch', 'python', 'go', 'codegen', 'offline', 'privacy'],
@@ -840,9 +840,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'openapi-preview',
     name: 'OpenAPI Preview',
-    tagline: 'Preview leve de specs',
+    tagline: 'Lightweight spec preview',
     description:
-      'Liste paths, methods e schemas de OpenAPI/Swagger YAML/JSON localmente. Sem upload de spec confidencial.',
+      'List paths, methods and schemas from local OpenAPI/Swagger YAML/JSON. No confidential spec upload.',
     category: 'Dev',
     icon: DocumentMagnifyingGlassIcon,
     keywords: ['openapi', 'swagger', 'api', 'preview', 'yaml', 'offline'],
@@ -851,9 +851,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'graphql-formatter',
     name: 'GraphQL Formatter',
-    tagline: 'Formate e valide GraphQL',
+    tagline: 'Format and validate GraphQL',
     description:
-      'Formate queries GraphQL e valide balanceamento de chaves. Mantém schema interno offline.',
+      'Format GraphQL queries and validate brace balance. Keeps internal schemas offline.',
     category: 'Dev',
     icon: CodeBracketSquareIcon,
     keywords: ['graphql', 'format', 'query', 'validate', 'offline'],
@@ -864,7 +864,7 @@ export const TOOLS: ToolDef[] = [
     name: '.env Transcoder',
     tagline: '.env ↔ JSON ↔ YAML',
     description:
-      'Transcodifique .env para JSON/YAML e vice-versa. Complementa Env Scrubber — não mascara, apenas converte local.',
+      'Transcode .env to JSON/YAML and back. Complements Env Scrubber — does not mask, only converts locally.',
     category: 'Dev',
     icon: WrenchScrewdriverIcon,
     keywords: ['env', 'dotenv', 'json', 'yaml', 'transcode', 'offline', 'privacy'],
@@ -873,9 +873,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'semver-checker',
     name: 'SemVer Checker',
-    tagline: 'Compare e teste ranges',
+    tagline: 'Compare and test ranges',
     description:
-      'Compare versões SemVer e teste ranges (^, ~, >=). Ideal para package.json sem consultar serviço externo.',
+      'Compare SemVer versions and test ranges (^, ~, >=). Great for package.json without external services.',
     category: 'Dev',
     icon: HashtagIcon,
     keywords: ['semver', 'version', 'range', 'compare', 'offline'],
@@ -886,7 +886,7 @@ export const TOOLS: ToolDef[] = [
     name: 'Key Pair Generator',
     tagline: 'RSA/EC via Web Crypto',
     description:
-      'Gere pares RSA-2048/4096 e EC P-256/P-384 via Web Crypto e exporte PEM. Chave privada nunca sai do tab.',
+      'Generate RSA-2048/4096 and EC P-256/P-384 pairs via Web Crypto and export PEM. Private key never leaves the tab.',
     category: 'Dev',
     icon: KeyIcon,
     keywords: ['keypair', 'rsa', 'ec', 'pem', 'webcrypto', 'offline', 'privacy'],
@@ -895,9 +895,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'query-builder',
     name: 'Query String Builder',
-    tagline: 'Monte e parseie query strings',
+    tagline: 'Build and parse query strings',
     description:
-      'Monte URLs com query params e parseie URLs existentes usando URLSearchParams nativo. Tokens em query ficam locais.',
+      'Build URLs with query params and parse existing URLs using native URLSearchParams. Query tokens stay local.',
     category: 'Dev',
     icon: LinkIcon,
     keywords: ['query', 'url', 'searchparams', 'builder', 'parser', 'offline'],
@@ -906,9 +906,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'header-builder',
     name: 'HTTP Header Builder',
-    tagline: 'Monte headers + atlas de status',
+    tagline: 'Build headers + status atlas',
     description:
-      'Monte headers HTTP, gere cURL e consulte atlas de status codes. Nenhum header com token é enviado.',
+      'Build HTTP headers, generate cURL and browse the status code atlas. No token header is sent.',
     category: 'Dev',
     icon: DocumentCheckIcon,
     keywords: ['header', 'http', 'status', 'curl', 'authorization', 'offline'],
@@ -917,9 +917,9 @@ export const TOOLS: ToolDef[] = [
   {
     id: 'json-diff',
     name: 'JSON Diff',
-    tagline: 'Diff estrutural de JSON',
+    tagline: 'Structural JSON diff',
     description:
-      'Compare dois JSONs estruturalmente, ignorando ordem de chaves. Ideal para diff de configs prod vs staging.',
+      'Diff two JSON documents structurally, ignoring key order. Ideal for prod vs staging config diffs.',
     category: 'Dev',
     icon: DocumentMagnifyingGlassIcon,
     keywords: ['json', 'diff', 'compare', 'structural', 'offline', 'privacy'],

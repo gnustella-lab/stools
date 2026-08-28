@@ -15,19 +15,19 @@ export default function JsonPathTester(){
   const result=useMemo(()=> evaluateJsonPath(json,path),[json,path]);
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Teste JSONPath / JMESPath simples sem colar JSON de clientes em jsonpath.com. Tudo local.</Text>
+      <Text type="supporting" display="block">Test simple JSONPath / JMESPath without pasting customer JSON into jsonpath.com. All local.</Text>
       <TextArea label="JSON" placeholder='{"store":{...}}' value={json} onChange={setJson} rows={10} hasSpellCheck={false} status={result.error && json.trim() ? {type:'error', message: result.error}:undefined} />
       <HStack gap={3} wrap="wrap" vAlign="end">
         <TextInput label="JSONPath" placeholder="$.store.book[*].title" value={path} onChange={setPath} width="100%" status={result.error?{type:'error', message: result.error}:undefined} />
         <CopyButton value={result.pretty ?? ''} />
       </HStack>
       <HStack gap={2} vAlign="center">
-        <Token label={result.error? 'Erro' : `Resultado: ${Array.isArray(result.value)? (result.value as unknown[]).length+' itens': result.value===null?'null':'1 valor'}`} size="sm" color={result.error?'red':'green'} />
+        <Token label={result.error? 'Error' : `Result: ${Array.isArray(result.value)? (result.value as unknown[]).length+' items': result.value===null?'null':'1 value'}`} size="sm" color={result.error?'red':'green'} />
       </HStack>
       {result.pretty!==undefined && !result.error && (
         <CodeBlock code={result.pretty ?? ''} language="json" width="100%" maxHeight={320} hasLineNumbers hasCopyButton={false} />
       )}
-      <Banner status="info" title="Sintaxe suportada" description="$, ., [], [*], [0], ['key'], [0:2], * . Filtros ?() não implementados — use Regex Lab ou jq local para casos avançados." />
+      <Banner status="info" title="Supported syntax" description="$, ., [], [*], [0], ['key'], [0:2], * . Filters ?() are not implemented — use Regex Lab or local jq for advanced cases." />
     </VStack>
   );
 }

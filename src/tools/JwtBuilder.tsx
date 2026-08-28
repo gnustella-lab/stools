@@ -31,25 +31,25 @@ export default function JwtBuilder(){
     if(!token||!secret) return;
     try{
       const r=await verifyJwt(token, secret);
-      setVerified(r.valid? `✓ válido (${r.alg}) — payload: ${JSON.stringify(r.payload)}` : `✗ inválido (${r.alg ?? 'alg desconhecido'})`);
+      setVerified(r.valid? `✓ valid (${r.alg}) — payload: ${JSON.stringify(r.payload)}` : `✗ invalid (${r.alg ?? 'unknown alg'})`);
     }catch(e){ setVerified(e instanceof Error?e.message:String(e))}
   };
 
   return (
     <VStack gap={4}>
-      <Text type="supporting" display="block">Construa e assine JWTs HS256/384/512 localmente. Alternativa privada ao jwt.io — o secret nunca sai deste tab.</Text>
+      <Text type="supporting" display="block">Build and sign HS256/384/512 JWTs locally. A private alternative to jwt.io — the secret never leaves this tab.</Text>
       <HStack gap={3} wrap="wrap" vAlign="end">
         <Selector label="Alg" value={alg} onChange={v=>setAlg(v as JwtAlg)} options={[{value:'HS256',label:'HS256'},{value:'HS384',label:'HS384'},{value:'HS512',label:'HS512'}]} />
         <TextInput label="Secret (HMAC)" placeholder="sua-chave-secreta" value={secret} onChange={setSecret} width="280px" />
-        <CopyButton value={token} label="Copiar JWT" />
+        <CopyButton value={token} label="Copy JWT" />
       </HStack>
       <HStack gap={4} wrap="wrap">
         <VStack gap={2} style={{flex:1, minWidth:280}}>
-          <TextArea label="Header (JSON sem alg/typ)" value={header} onChange={setHeader} rows={4} hasSpellCheck={false} status={headerObj?undefined:{type:'error', message:'JSON inválido'}} />
-          <TextArea label="Payload (JSON)" value={payload} onChange={setPayload} rows={6} hasSpellCheck={false} status={payloadObj?undefined:{type:'error', message:'JSON inválido'}} />
+          <TextArea label="Header (JSON without alg/typ)" value={header} onChange={setHeader} rows={4} hasSpellCheck={false} status={headerObj?undefined:{type:'error', message:'Invalid JSON'}} />
+          <TextArea label="Payload (JSON)" value={payload} onChange={setPayload} rows={6} hasSpellCheck={false} status={payloadObj?undefined:{type:'error', message:'Invalid JSON'}} />
           <HStack gap={2}>
-            <button onClick={handleBuild} disabled={!canBuild} style={{padding:'8px 14px', borderRadius:8, background: canBuild?'#111':'#ccc', color:'#fff', border:'none', cursor: canBuild?'pointer':'not-allowed'}}>Assinar JWT</button>
-            <button onClick={handleVerify} disabled={!token} style={{padding:'8px 14px', borderRadius:8, background: token?'#222':'#ccc', color:'#fff', border:'none'}}>Verificar com secret</button>
+            <button onClick={handleBuild} disabled={!canBuild} style={{padding:'8px 14px', borderRadius:8, background: canBuild?'#111':'#ccc', color:'#fff', border:'none', cursor: canBuild?'pointer':'not-allowed'}}>Sign JWT</button>
+            <button onClick={handleVerify} disabled={!token} style={{padding:'8px 14px', borderRadius:8, background: token?'#222':'#ccc', color:'#fff', border:'none'}}>Verify with secret</button>
           </HStack>
           {verified && <Text type="supporting" display="block">{verified}</Text>}
         </VStack>
@@ -58,7 +58,7 @@ export default function JwtBuilder(){
           <CodeBlock code={token || '(clique em Assinar)'} language="plaintext" width="100%" maxHeight={260} isWrapped hasCopyButton={false} />
         </VStack>
       </HStack>
-      <Banner status="warning" title="Aviso" description="Assinatura HMAC local. Não valide tokens de produção apenas com este tool — verifique expiração (exp) e audiência no seu backend." />
+      <Banner status="warning" title="Warning" description="Local HMAC signature. Do not validate production tokens with this tool alone — check expiration (exp) and audience on your backend." />
     </VStack>
   );
 }
