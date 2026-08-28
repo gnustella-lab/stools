@@ -51,6 +51,7 @@ export const CATEGORY_ORDER: ToolCategory[] = [
   'Media',
   'Text',
   'Design',
+  'Dev',
 ];
 
 export const TOOLS: ToolDef[] = [
@@ -702,6 +703,227 @@ export const TOOLS: ToolDef[] = [
     icon: WrenchScrewdriverIcon,
     keywords: ['svg', 'optimize', 'minify', 'svgo', 'vector', 'clean', 'offline'],
     component: lazy(() => import('./SvgOptimizer')),
+  },
+  // Dev — 20 programming tools
+  {
+    id: 'yaml-converter',
+    name: 'YAML Converter',
+    tagline: 'YAML ↔ JSON sem vazar configs',
+    description:
+      'Converta YAML para JSON e vice-versa localmente. Evita enviar application.yaml com secrets para conversores online. Parser cobre mappings e sequências comuns.',
+    category: 'Dev',
+    icon: CodeBracketIcon,
+    keywords: ['yaml', 'json', 'convert', 'config', 'offline', 'privacy'],
+    component: lazy(() => import('./YamlConverter')),
+  },
+  {
+    id: 'toml-converter',
+    name: 'TOML Converter',
+    tagline: 'TOML ↔ JSON offline',
+    description:
+      'Transforme Cargo.toml, pyproject.toml e configs TOML em JSON localmente, sem expor estrutura interna.',
+    category: 'Dev',
+    icon: DocumentDuplicateIcon,
+    keywords: ['toml', 'json', 'cargo', 'pyproject', 'convert', 'offline'],
+    component: lazy(() => import('./TomlConverter')),
+  },
+  {
+    id: 'xml-converter',
+    name: 'XML Converter',
+    tagline: 'XML ↔ JSON via DOMParser',
+    description:
+      'Converta SOAP/RSS e XML genérico para JSON usando DOMParser nativo. Nenhum envelope com PII sai do browser.',
+    category: 'Dev',
+    icon: CodeBracketSquareIcon,
+    keywords: ['xml', 'json', 'convert', 'soap', 'domparser', 'offline'],
+    component: lazy(() => import('./XmlConverter')),
+  },
+  {
+    id: 'json-schema-validator',
+    name: 'JSON Schema Validator',
+    tagline: 'Valide payloads contra schema',
+    description:
+      'Valide JSON contra JSON Schema sem enviar schema proprietário. Cobre type, required, properties, enum e constraints comuns.',
+    category: 'Dev',
+    icon: DocumentCheckIcon,
+    keywords: ['json', 'schema', 'validate', 'ajv', 'offline', 'privacy'],
+    component: lazy(() => import('./JsonSchemaValidator')),
+  },
+  {
+    id: 'jsonpath-tester',
+    name: 'JSONPath Tester',
+    tagline: 'Teste JSONPath offline',
+    description:
+      'Teste expressões JSONPath ($, ., [], [*]) contra seu JSON privado. Evita colar dados de clientes em testadores online.',
+    category: 'Dev',
+    icon: MagnifyingGlassIcon,
+    keywords: ['jsonpath', 'jmespath', 'json', 'query', 'offline', 'privacy'],
+    component: lazy(() => import('./JsonPathTester')),
+  },
+  {
+    id: 'jwt-builder',
+    name: 'JWT Builder & Signer',
+    tagline: 'Assine HS256/384/512 local',
+    description:
+      'Construa e assine JWTs com HMAC-SHA via Web Crypto. Segredo nunca sai do tab — alternativa privada ao jwt.io.',
+    category: 'Dev',
+    icon: TicketIcon,
+    keywords: ['jwt', 'jws', 'hs256', 'sign', 'hmac', 'offline', 'privacy'],
+    component: lazy(() => import('./JwtBuilder')),
+  },
+  {
+    id: 'hex-inspector',
+    name: 'Hex Inspector',
+    tagline: 'Hex ↔ Texto e hex dump',
+    description:
+      'Converta texto para hex, hex para texto e gere hex dump estilo xxd. Arquivos lidos via FileReader, nunca enviados.',
+    category: 'Dev',
+    icon: CommandLineIcon,
+    keywords: ['hex', 'dump', 'xxd', 'binary', 'offline', 'privacy'],
+    component: lazy(() => import('./HexInspector')),
+  },
+  {
+    id: 'unicode-inspector',
+    name: 'Unicode Inspector',
+    tagline: 'Codepoints, UTF-8, NFC/NFD',
+    description:
+      'Inspecione codepoints, bytes UTF-8 e normalizações. Detecta mojibake. Tudo via TextEncoder local.',
+    category: 'Dev',
+    icon: LanguageIcon,
+    keywords: ['unicode', 'utf8', 'codepoint', 'nfc', 'nfd', 'offline'],
+    component: lazy(() => import('./UnicodeInspector')),
+  },
+  {
+    id: 'code-beautifier',
+    name: 'Code Beautifier',
+    tagline: 'HTML/CSS/JS/JSON com 2 engines',
+    description:
+      'Formate e minifique HTML, CSS, JS e JSON offline. Engine Fast (regex leve) e Pretty (fiel), ambos sem upload.',
+    category: 'Dev',
+    icon: PaintBrushIcon,
+    keywords: ['beautify', 'format', 'minify', 'prettier', 'html', 'css', 'js', 'offline'],
+    component: lazy(() => import('./CodeBeautifier')),
+  },
+  {
+    id: 'sql-formatter',
+    name: 'SQL Formatter',
+    tagline: 'Formate SQL offline',
+    description:
+      'Formate e minifique SQL com keywords em maiúsculas e quebras por cláusula. Evita enviar dumps com PII para formatadores online.',
+    category: 'Dev',
+    icon: CubeIcon,
+    keywords: ['sql', 'format', 'pretty', 'minify', 'offline', 'privacy'],
+    component: lazy(() => import('./SqlFormatter')),
+  },
+  {
+    id: 'cron-builder',
+    name: 'Cron Builder',
+    tagline: 'Monte e explique crons',
+    description:
+      'Monte expressões cron 5 campos, valide e veja próximas execuções. Explicação humana PT-BR, tudo local.',
+    category: 'Dev',
+    icon: ClockIcon,
+    keywords: ['cron', 'schedule', 'builder', 'explain', 'offline'],
+    component: lazy(() => import('./CronBuilder')),
+  },
+  {
+    id: 'curl-codegen',
+    name: 'cURL to Code',
+    tagline: 'cURL → fetch / Python / Go',
+    description:
+      'Converta cURL para fetch, Python requests e Go http sem mandar Authorization para conversores online.',
+    category: 'Dev',
+    icon: CommandLineIcon,
+    keywords: ['curl', 'fetch', 'python', 'go', 'codegen', 'offline', 'privacy'],
+    component: lazy(() => import('./CurlCodegen')),
+  },
+  {
+    id: 'openapi-preview',
+    name: 'OpenAPI Preview',
+    tagline: 'Preview leve de specs',
+    description:
+      'Liste paths, methods e schemas de OpenAPI/Swagger YAML/JSON localmente. Sem upload de spec confidencial.',
+    category: 'Dev',
+    icon: DocumentMagnifyingGlassIcon,
+    keywords: ['openapi', 'swagger', 'api', 'preview', 'yaml', 'offline'],
+    component: lazy(() => import('./OpenApiPreview')),
+  },
+  {
+    id: 'graphql-formatter',
+    name: 'GraphQL Formatter',
+    tagline: 'Formate e valide GraphQL',
+    description:
+      'Formate queries GraphQL e valide balanceamento de chaves. Mantém schema interno offline.',
+    category: 'Dev',
+    icon: CodeBracketSquareIcon,
+    keywords: ['graphql', 'format', 'query', 'validate', 'offline'],
+    component: lazy(() => import('./GraphqlFormatter')),
+  },
+  {
+    id: 'env-transcoder',
+    name: '.env Transcoder',
+    tagline: '.env ↔ JSON ↔ YAML',
+    description:
+      'Transcodifique .env para JSON/YAML e vice-versa. Complementa Env Scrubber — não mascara, apenas converte local.',
+    category: 'Dev',
+    icon: WrenchScrewdriverIcon,
+    keywords: ['env', 'dotenv', 'json', 'yaml', 'transcode', 'offline', 'privacy'],
+    component: lazy(() => import('./EnvTranscoder')),
+  },
+  {
+    id: 'semver-checker',
+    name: 'SemVer Checker',
+    tagline: 'Compare e teste ranges',
+    description:
+      'Compare versões SemVer e teste ranges (^, ~, >=). Ideal para package.json sem consultar serviço externo.',
+    category: 'Dev',
+    icon: HashtagIcon,
+    keywords: ['semver', 'version', 'range', 'compare', 'offline'],
+    component: lazy(() => import('./SemverChecker')),
+  },
+  {
+    id: 'keypair-generator',
+    name: 'Key Pair Generator',
+    tagline: 'RSA/EC via Web Crypto',
+    description:
+      'Gere pares RSA-2048/4096 e EC P-256/P-384 via Web Crypto e exporte PEM. Chave privada nunca sai do tab.',
+    category: 'Dev',
+    icon: KeyIcon,
+    keywords: ['keypair', 'rsa', 'ec', 'pem', 'webcrypto', 'offline', 'privacy'],
+    component: lazy(() => import('./KeypairGenerator')),
+  },
+  {
+    id: 'query-builder',
+    name: 'Query String Builder',
+    tagline: 'Monte e parseie query strings',
+    description:
+      'Monte URLs com query params e parseie URLs existentes usando URLSearchParams nativo. Tokens em query ficam locais.',
+    category: 'Dev',
+    icon: LinkIcon,
+    keywords: ['query', 'url', 'searchparams', 'builder', 'parser', 'offline'],
+    component: lazy(() => import('./QueryBuilder')),
+  },
+  {
+    id: 'header-builder',
+    name: 'HTTP Header Builder',
+    tagline: 'Monte headers + atlas de status',
+    description:
+      'Monte headers HTTP, gere cURL e consulte atlas de status codes. Nenhum header com token é enviado.',
+    category: 'Dev',
+    icon: DocumentCheckIcon,
+    keywords: ['header', 'http', 'status', 'curl', 'authorization', 'offline'],
+    component: lazy(() => import('./HeaderBuilder')),
+  },
+  {
+    id: 'json-diff',
+    name: 'JSON Diff',
+    tagline: 'Diff estrutural de JSON',
+    description:
+      'Compare dois JSONs estruturalmente, ignorando ordem de chaves. Ideal para diff de configs prod vs staging.',
+    category: 'Dev',
+    icon: DocumentMagnifyingGlassIcon,
+    keywords: ['json', 'diff', 'compare', 'structural', 'offline', 'privacy'],
+    component: lazy(() => import('./JsonDiff')),
   },
 ];
 
