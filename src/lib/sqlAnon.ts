@@ -186,7 +186,7 @@ export function anonymizeSqlDump(sql: string, config: SqlAnonConfig, options: Sq
 }
 
 export function inferSqlStrategies(columns: string[]): SqlAnonConfig {
-  const hints = ['email', 'phone', 'name', 'address', 'city', 'cpf', 'cnpj', 'card', 'token', 'secret', 'password', 'ip'];
+  const hints = ['email', 'phone', 'name', 'address', 'city', 'cnpj', 'card', 'token', 'secret', 'password', 'ip'];
   const cfg: SqlAnonConfig = {};
   for (const c of columns) {
     const lower = c.toLowerCase();

@@ -1,4 +1,4 @@
-export type PiiKind = 'email' | 'phone' | 'card' | 'jwt' | 'pem' | 'ipv4' | 'iban' | 'cpf' | 'apiToken' | 'awsKey';
+export type PiiKind = 'email' | 'phone' | 'card' | 'jwt' | 'pem' | 'ipv4' | 'iban' | 'apiToken' | 'awsKey';
 
 export interface PiiFinding {
   kind: PiiKind;
@@ -16,7 +16,6 @@ const PATTERNS: { kind: PiiKind; label: string; re: RegExp; severity: 'high' | '
   { kind: 'pem', label: 'PEM private keys', re: /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/g, severity: 'high', sampleLen: 1 },
   { kind: 'ipv4', label: 'IPv4 addresses', re: /\b(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\b/g, severity: 'medium', sampleLen: 3 },
   { kind: 'iban', label: 'IBAN', re: /\b[A-Z]{2}\d{2}[A-Z0-9]{11,30}\b/g, severity: 'high', sampleLen: 3 },
-  { kind: 'cpf', label: 'CPF-like (###.###.###-##)', re: /\b\d{3}\.\d{3}\.\d{3}-\d{2}\b/g, severity: 'high', sampleLen: 3 },
   { kind: 'apiToken', label: 'API / Bearer tokens', re: /\b(?:Bearer\s+[A-Za-z0-9._\-+=/]{12,}|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,})\b/g, severity: 'high', sampleLen: 2 },
   { kind: 'awsKey', label: 'AWS access keys (AKIA/ASIA)', re: /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/g, severity: 'high', sampleLen: 2 },
 ];

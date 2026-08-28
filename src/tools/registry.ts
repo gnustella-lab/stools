@@ -529,10 +529,10 @@ export const TOOLS: ToolDef[] = [
     name: 'PII Risk Scanner',
     tagline: 'Score a document for PII exposure',
     description:
-      'Scan free-text for emails, phones, cards, JWTs, PEM keys, IPs, IBAN and CPF patterns and compute a risk score. Detection only — no replacement, no upload.',
+      'Scan free-text for emails, phones, cards, JWTs, PEM keys, IPs and IBAN patterns and compute a risk score. Detection only — no replacement, no upload.',
     category: 'Text',
     icon: ShieldExclamationIcon,
-    keywords: ['pii', 'risk', 'scan', 'email', 'phone', 'card', 'iban', 'cpf', 'privacy'],
+    keywords: ['pii', 'risk', 'scan', 'email', 'phone', 'card', 'iban', 'privacy'],
     component: lazy(() => import('./PiiRiskScanner')),
   },
   {

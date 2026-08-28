@@ -259,7 +259,7 @@ export function anonymizeJson(
 }
 
 export function inferStrategies(headers: string[]): AnonymizeConfig {
-  const sensitiveHints = ['email', 'e-mail', 'mail', 'phone', 'tel', 'cpf', 'cnpj', 'name', 'nome', 'address', 'endereco', 'city', 'cidade', 'ip', 'card', 'token', 'secret', 'password', 'senha', 'dob', 'birth', 'nascimento', 'gps', 'lat', 'lon', 'rg'];
+  const sensitiveHints = ['email', 'e-mail', 'mail', 'phone', 'tel', 'cnpj', 'name', 'nome', 'address', 'endereco', 'city', 'cidade', 'ip', 'card', 'token', 'secret', 'password', 'senha', 'dob', 'birth', 'nascimento', 'gps', 'lat', 'lon', 'rg'];
   const config: AnonymizeConfig = {};
   for (const h of headers) {
     const lower = h.toLowerCase();

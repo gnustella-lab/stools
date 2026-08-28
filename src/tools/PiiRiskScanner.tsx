@@ -7,7 +7,7 @@ import { Token } from '@astryxdesign/core/Token';
 import { scanPii, piiRiskScore } from '../lib/piiScan';
 
 export default function PiiRiskScanner() {
-  const [input, setInput] = useState('Hi team,\n\nPlease review:\n- Contact alice@example.com, +55 11 99999-1234\n- Card 4111 1111 1111 1111\n- Token Bearer eyJhbGciOi... and sk-abc123\n- Server 203.0.113.5\n- IBAN DE89 3704 0044 0532 0130 00\n- CPF 123.456.789-09\n\nThanks!');
+  const [input, setInput] = useState('Hi team,\n\nPlease review:\n- Contact alice@example.com, +55 11 99999-1234\n- Card 4111 1111 1111 1111\n- Token Bearer eyJhbGciOi... and sk-abc123\n- Server 203.0.113.5\n- IBAN DE89 3704 0044 0532 0130 00\n\nThanks!');
   const findings = useMemo(() => scanPii(input), [input]);
   const score = useMemo(() => piiRiskScore(findings), [findings]);
 
@@ -16,7 +16,7 @@ export default function PiiRiskScanner() {
   return (
     <VStack gap={4}>
       <Text type="supporting" display="block">
-        Scan free-text documents for PII before sharing. Reports emails, phones, cards, JWTs, PEM keys, IPs, IBAN and CPF patterns — scoring stays in this tab. No replacement, just detection.
+        Scan free-text documents for PII before sharing. Reports emails, phones, cards, JWTs, PEM keys, IPs and IBAN patterns — scoring stays in this tab. No replacement, just detection.
       </Text>
 
       <TextArea label="Document" placeholder="Paste ticket, log snippet, or doc…" value={input} onChange={setInput} rows={8} hasSpellCheck={false} />
@@ -29,7 +29,7 @@ export default function PiiRiskScanner() {
       </HStack>
 
       {findings.length === 0 ? (
-        <Banner status="success" title="No PII patterns detected" description="No emails, phones, cards, JWTs, PEM keys, IPs, IBAN or CPF patterns found with current heuristics. Manual review still recommended — novel formats can be missed." />
+        <Banner status="success" title="No PII patterns detected" description="No emails, phones, cards, JWTs, PEM keys, IPs or IBAN patterns found with current heuristics. Manual review still recommended — novel formats can be missed." />
       ) : (
         <VStack gap={2}>
           {findings.map(f => (
